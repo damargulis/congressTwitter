@@ -31,7 +31,7 @@ class composeViewController: UIViewController, UITextViewDelegate {
         if approve == true {
             tweetTextView.text = ".@\(toCongressman.twitterUsername!) I approve of your vote of \(theyVoted) on \(thisVote.rollID)!"
         } else {
-            tweetTextView.text = ".\(toCongressman.twitterUsername!) I disapprove fo your vote of \(theyVoted) on \(thisVote.rollID)!"
+            tweetTextView.text = ".@\(toCongressman.twitterUsername!) I disapprove of your vote of \(theyVoted) on \(thisVote.rollID)!"
         }
         
         let charLeft = 140 - tweetTextView.text.characters.count

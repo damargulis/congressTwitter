@@ -20,6 +20,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var partyImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,20 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         chamberLabel.text = "Chamber: " + congressman.chamber!
         partyLabel.text = "Party: " + congressman.partyName!
         termLabel.text = "Current Term: " + congressman.term!
+        
+        if (congressman.partyCode == "D"){
+            
+            partyImageView.image = UIImage(named: "Donkey")
+            
+        } else if (congressman.partyCode == "R"){
+            
+            partyImageView.image = UIImage(named: "Elephant")
+            
+        } else {
+            
+            partyImageView.image = UIImage(named: "Congress")
+            
+        }
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120

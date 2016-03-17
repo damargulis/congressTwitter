@@ -246,10 +246,13 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Term" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="na9-lz-dHz">
                                 <rect key="frame" x="22" y="171" width="273" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMp-9u-vFF">
+                                <rect key="frame" x="223" y="72" width="91" height="91"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chamber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1r-ze-tb2">
                                 <rect key="frame" x="21" y="113" width="274" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -270,6 +273,7 @@
                         <outlet property="chamberLabel" destination="n1r-ze-tb2" id="cqD-ry-9sn"/>
                         <outlet property="loginButton" destination="9Zo-sO-hB9" id="88R-8F-j1O"/>
                         <outlet property="nameLabel" destination="Jkc-bc-9VM" id="Q3L-n8-jWI"/>
+                        <outlet property="partyImageView" destination="XMp-9u-vFF" id="Wxl-cM-Ndd"/>
                         <outlet property="partyLabel" destination="vEx-mB-B5X" id="ieR-cu-ca7"/>
                         <outlet property="searchBar" destination="rJ7-9K-wJk" id="oJD-SI-erz"/>
                         <outlet property="tableView" destination="80O-WN-hAM" id="EWm-Uh-lw4"/>
