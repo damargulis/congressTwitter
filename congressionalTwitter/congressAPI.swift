@@ -18,13 +18,25 @@ class congressAPI: BDBOAuth1SessionManager {
     
     static let sharedInstance = congressAPI(baseURL: apiBaseUrl)
     
-    func getLegislators(page: Int, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
+    func getLegislators(page: Int, searchText: String?, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
         
-        let parameters = ["order": "state__asc,last_name__asc",
-                        "page": page]
+        
+        var parameters: NSDictionary!
+        
+        if let searchText = searchText{
+            
+            parameters = ["order": "state__asc,last_name__asc",
+                "page": page,
+                "query": searchText]
+            
+        } else {
+            
+            parameters = ["order": "state__asc,last_name__asc",
+                "page": page]
+            
+        }
     
         GET("legislators?apikey=\(apiKey)", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-            //print("resonse: \(response)")
             
             let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary])
             success(people)
@@ -60,7 +72,6 @@ class congressAPI: BDBOAuth1SessionManager {
         
         GET(urlString, parameters: ["apikey": apiKey, "fields": "voter_ids,question,result,roll_id,roll_type,bill",
             "order": "voted_at"], progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            print(response)
             let votes = vote.votesDictToArray(response!["results"] as! [NSDictionary])
             success(votes)
             
@@ -80,7 +91,6 @@ class congressAPI: BDBOAuth1SessionManager {
         GET(urlString, parameters: ["apikey": apiKey, "fields": "voter_ids,question,result,roll_id,roll_type,bill",
             "order": "voted_at",
             "query": search], progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                print(response)
                 let votes = vote.votesDictToArray(response!["results"] as! [NSDictionary])
                 success(votes)
                 

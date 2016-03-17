@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginButton: UIBarButtonItem!
@@ -31,6 +31,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var tapGesture2: UITapGestureRecognizer!
     @IBOutlet var tapGesture3: UITapGestureRecognizer!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    
     var isMoreDataLoading = false
     var page: Int!
     
@@ -39,6 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         tableView.dataSource = self
         tableView.delegate = self
+        searchBar.delegate = self
         page = 1
         
         
@@ -50,25 +54,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
             location = locationManager.location?.coordinate
-            print("lat")
-            print(location?.latitude)
-            print("long")
-            print(location?.longitude)
             
             
             congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
                 self.localCongressman = people
-                print("LOCAL CONGRESSMAN")
                 self.localName1Label.text = self.localCongressman![0].name
                 self.localParty1Label.text = self.localCongressman![0].partyName
                 self.localName2Label.text = self.localCongressman![1].name
                 self.localParty2Label.text = self.localCongressman![1].partyName
                 self.localName3Label.text = self.localCongressman![2].name
                 self.localParty3Label.text = self.localCongressman![2].partyName
-                
-                for item in people{
-                    print(item.name)
-                }
                 }, failure: { (error: NSError) -> () in
                     print(error.localizedDescription)
             })
@@ -86,7 +81,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         //load congressdata into array
-        congressAPI.sharedInstance.getLegislators(page, success: { (people: [congressPerson]) -> () in
+        congressAPI.sharedInstance.getLegislators(page, searchText: nil, success: { (people: [congressPerson]) -> () in
             self.allCongressman = people
             self.tableView.reloadData()
             self.page = self.page + 1
@@ -114,8 +109,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         if(congressman.partyCode == "D"){
             cell.backgroundColor = UIColor.blueColor()
+            cell.nameLabel.textColor = UIColor.whiteColor()
+            cell.partyLabel.textColor = UIColor.whiteColor()
+            cell.stateLabel.textColor = UIColor.whiteColor()
+            
         } else if(congressman.partyCode == "R"){
             cell.backgroundColor = UIColor.redColor()
+            cell.nameLabel.textColor = UIColor.blackColor()
+            cell.partyLabel.textColor = UIColor.blackColor()
+            cell.stateLabel.textColor = UIColor.blackColor()
+            
+        } else if(congressman.partyCode == "I"){
+            cell.backgroundColor = UIColor.grayColor()
+            cell.nameLabel.textColor = UIColor.blackColor()
+            cell.partyLabel.textColor = UIColor.blackColor()
+            cell.stateLabel.textColor = UIColor.blackColor()
         }
         
         return cell
@@ -178,9 +186,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func loadMoreData(){
         
-        print("loading more data")
-        
-        congressAPI.sharedInstance.getLegislators(page, success: { (nextPage: [congressPerson]) -> () in
+        congressAPI.sharedInstance.getLegislators(page, searchText: self.searchBar.text, success: { (nextPage: [congressPerson]) -> () in
             for item in nextPage{
                 self.allCongressman?.append(item)
             }
@@ -228,6 +234,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
 
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.page = 1
+        congressAPI.sharedInstance.getLegislators(page, searchText: searchBar.text, success: { (people: [congressPerson]) -> () in
+            self.allCongressman = people
+            self.tableView.reloadData()
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
     
     
 }

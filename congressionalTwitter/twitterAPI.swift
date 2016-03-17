@@ -44,7 +44,6 @@ class twitterAPI: BDBOAuth1SessionManager {
     
     func currentAccount(success: (twitterUser) -> (), failure: (NSError) -> ()){
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-            //print("user: \(response)")
             
             let user = twitterUser(dictionary: response as! NSDictionary)
             
@@ -64,7 +63,6 @@ class twitterAPI: BDBOAuth1SessionManager {
         //fetch request token and redirect to auth page
         twitterAPI.sharedInstance.requestSerializer.removeAccessToken()
         twitterAPI.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "congressTwitter://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
-            print("Got the request token")
             
             let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
             
@@ -108,11 +106,10 @@ class twitterAPI: BDBOAuth1SessionManager {
        
         
         POST("https://api.twitter.com/1.1/statuses/update.json", parameters: ["status": text], progress: { (NSProgress) -> Void in
-            print("progress")
             }, success: { (data: NSURLSessionDataTask, object: AnyObject?) -> Void in
-                print("success")
+
             }) { (data: NSURLSessionDataTask?, error: NSError) -> Void in
-                print("error")
+                print(error.localizedDescription)
         }
     }
     

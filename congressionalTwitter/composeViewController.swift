@@ -57,9 +57,7 @@ class composeViewController: UIViewController, UITextViewDelegate {
     
     
     @IBAction func onSend(sender: AnyObject) {
-        print("sending")
         twitterAPI.sharedInstance.postStatus(tweetTextView.text)
-        print("sent")
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     

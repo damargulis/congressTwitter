@@ -55,7 +55,6 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
     }
 
     override func didReceiveMemoryWarning() {
