@@ -12,9 +12,22 @@
 		399AED981C927E3500AE488F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399AED961C927E3500AE488F /* Main.storyboard */; };
 		399AED9A1C927E3500AE488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 399AED991C927E3500AE488F /* Assets.xcassets */; };
 		399AED9D1C927E3500AE488F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399AED9B1C927E3500AE488F /* LaunchScreen.storyboard */; };
+		399AEDA71C927EE500AE488F /* congressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDA61C927EE500AE488F /* congressTableViewCell.swift */; };
+		399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDA81C927FD800AE488F /* congressPerson.swift */; };
+		399AEDAC1C9282A400AE488F /* congressAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDAB1C9282A400AE488F /* congressAPI.swift */; };
+		399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */; };
+		399AEDB31C979ACC00AE488F /* detailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDB21C979ACC00AE488F /* detailTableViewCell.swift */; };
+		399AEDB51C979BC400AE488F /* vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDB41C979BC400AE488F /* vote.swift */; };
+		399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */; };
+		399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDB81C97BA4200AE488F /* twitterAPI.swift */; };
+		399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDBA1C97BCD300AE488F /* twitterUser.swift */; };
+		399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDBE1C9A34CB00AE488F /* composeViewController.swift */; };
+		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0433A8EABE488768BCA0805B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399AED921C927E3500AE488F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399AED941C927E3500AE488F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +35,17 @@
 		399AED991C927E3500AE488F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		399AED9C1C927E3500AE488F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		399AED9E1C927E3500AE488F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		399AEDA61C927EE500AE488F /* congressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = congressTableViewCell.swift; sourceTree = "<group>"; };
+		399AEDA81C927FD800AE488F /* congressPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = congressPerson.swift; sourceTree = "<group>"; };
+		399AEDAB1C9282A400AE488F /* congressAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = congressAPI.swift; sourceTree = "<group>"; };
+		399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = congressmanDetailView.swift; sourceTree = "<group>"; };
+		399AEDB21C979ACC00AE488F /* detailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailTableViewCell.swift; sourceTree = "<group>"; };
+		399AEDB41C979BC400AE488F /* vote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vote.swift; sourceTree = "<group>"; };
+		399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = voteDetailViewController.swift; sourceTree = "<group>"; };
+		399AEDB81C97BA4200AE488F /* twitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twitterAPI.swift; sourceTree = "<group>"; };
+		399AEDBA1C97BCD300AE488F /* twitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twitterUser.swift; sourceTree = "<group>"; };
+		399AEDBE1C9A34CB00AE488F /* composeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = composeViewController.swift; sourceTree = "<group>"; };
+		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +65,8 @@
 			children = (
 				399AED911C927E3500AE488F /* congressionalTwitter */,
 				399AED901C927E3500AE488F /* Products */,
+				978C0F1648F56351869DCF7B /* Pods */,
+				6A3AC0BC8DEECBBE31BFC77C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +81,73 @@
 		399AED911C927E3500AE488F /* congressionalTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				399AEDB11C979AA900AE488F /* Table Cells */,
+				399AEDAE1C93365600AE488F /* View Controllers */,
+				399AEDAD1C93247400AE488F /* Classes */,
+				399AEDAA1C92827300AE488F /* API */,
 				399AED921C927E3500AE488F /* AppDelegate.swift */,
-				399AED941C927E3500AE488F /* ViewController.swift */,
 				399AED961C927E3500AE488F /* Main.storyboard */,
 				399AED991C927E3500AE488F /* Assets.xcassets */,
 				399AED9B1C927E3500AE488F /* LaunchScreen.storyboard */,
 				399AED9E1C927E3500AE488F /* Info.plist */,
 			);
 			path = congressionalTwitter;
+			sourceTree = "<group>";
+		};
+		399AEDAA1C92827300AE488F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				399AEDAB1C9282A400AE488F /* congressAPI.swift */,
+				399AEDB81C97BA4200AE488F /* twitterAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		399AEDAD1C93247400AE488F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				399AEDA81C927FD800AE488F /* congressPerson.swift */,
+				399AEDB41C979BC400AE488F /* vote.swift */,
+				399AEDBA1C97BCD300AE488F /* twitterUser.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		399AEDAE1C93365600AE488F /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */,
+				399AED941C927E3500AE488F /* ViewController.swift */,
+				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
+				399AEDBE1C9A34CB00AE488F /* composeViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		399AEDB11C979AA900AE488F /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				399AEDA61C927EE500AE488F /* congressTableViewCell.swift */,
+				399AEDB21C979ACC00AE488F /* detailTableViewCell.swift */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
+		6A3AC0BC8DEECBBE31BFC77C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0433A8EABE488768BCA0805B /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		978C0F1648F56351869DCF7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */,
+				514966BB35D85546A91AA222 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 399AEDA11C927E3500AE488F /* Build configuration list for PBXNativeTarget "congressionalTwitter" */;
 			buildPhases = (
+				EB36749BBF74111A3E526141 /* Check Pods Manifest.lock */,
 				399AED8B1C927E3500AE488F /* Sources */,
 				399AED8C1C927E3500AE488F /* Frameworks */,
 				399AED8D1C927E3500AE488F /* Resources */,
+				F3B5A50AB535DAE1A34324E0 /* Embed Pods Frameworks */,
+				E6D6C4D79AC0806E51B8B24B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,12 +219,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E6D6C4D79AC0806E51B8B24B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB36749BBF74111A3E526141 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F3B5A50AB535DAE1A34324E0 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		399AED8B1C927E3500AE488F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				399AEDA71C927EE500AE488F /* congressTableViewCell.swift in Sources */,
+				399AEDAC1C9282A400AE488F /* congressAPI.swift in Sources */,
+				399AEDB31C979ACC00AE488F /* detailTableViewCell.swift in Sources */,
+				399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */,
+				399AEDB51C979BC400AE488F /* vote.swift in Sources */,
+				399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */,
 				399AED951C927E3500AE488F /* ViewController.swift in Sources */,
+				399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */,
+				399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */,
+				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,
+				399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */,
 				399AED931C927E3500AE488F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,23 +392,29 @@
 		};
 		399AEDA21C927E3500AE488F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = congressionalTwitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dan.congressionalTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		399AEDA31C927E3500AE488F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 514966BB35D85546A91AA222 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = congressionalTwitter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dan.congressionalTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -284,6 +437,7 @@
 				399AEDA31C927E3500AE488F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
