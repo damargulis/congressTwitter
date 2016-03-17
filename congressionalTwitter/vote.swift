@@ -17,6 +17,7 @@ class vote: NSObject {
     
     var title: String?
     
+    
     init(dict: NSDictionary){
         
         rollID = dict["roll_id"] as! String
@@ -28,6 +29,7 @@ class vote: NSObject {
         if title == nil {
             title = dict["bill"]?["official_title"] as? String
         }
+        
         
     }
     

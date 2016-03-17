@@ -10,18 +10,16 @@ import UIKit
 
 class congressmanDetailView: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
-    
     var congressman: congressPerson!
     var votes: [vote]?
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var chamberLabel: UILabel!
+    @IBOutlet weak var partyLabel: UILabel!
+    @IBOutlet weak var termLabel: UILabel!
     @IBOutlet weak var loginButton: UIBarButtonItem!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +29,9 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         searchBar.delegate = self
         
-        
         if twitterUser.currentUser != nil {
-            
             loginButton.tag = 1
             loginButton.title = "Logout"
-            
         } else {
             loginButton.tag = 0
             loginButton.title = "Login"
@@ -54,7 +49,12 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                 print(error.localizedDescription)
         }
         
+        chamberLabel.text = "Chamber: " + congressman.chamber!
+        partyLabel.text = "Party: " + congressman.partyName!
+        termLabel.text = "Current Term: " + congressman.term!
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
     }
 

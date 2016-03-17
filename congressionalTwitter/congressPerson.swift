@@ -27,6 +27,7 @@ class congressPerson: NSObject {
     var chamber: String?
     var termStart: String?
     var termEnd: String?
+    var term: String?
     
     var bioGuideId: String!
     
@@ -78,6 +79,12 @@ class congressPerson: NSObject {
         website = entry["website"] as? String
         twitterUsername = entry["twitter_id"] as? String
         
+        
+        if let termStart = termStart{
+            if let termEnd = termEnd{
+                term = termStart + " - " + termEnd
+            }
+        }
         
         
         

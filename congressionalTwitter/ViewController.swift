@@ -112,6 +112,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.partyLabel.text = congressman.partyName
         cell.stateLabel.text = congressman.stateName
         
+        if(congressman.partyCode == "D"){
+            cell.backgroundColor = UIColor.blueColor()
+        } else if(congressman.partyCode == "R"){
+            cell.backgroundColor = UIColor.redColor()
+        }
+        
         return cell
         
         

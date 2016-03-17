@@ -19,7 +19,6 @@ class voteDetailViewController: UIViewController {
     @IBOutlet weak var approveButton: UIButton!
     @IBOutlet weak var disapproveButton: UIButton!
     
-    
     var congressman: congressPerson!
     var thisvote: vote!
     
@@ -41,10 +40,18 @@ class voteDetailViewController: UIViewController {
         
         
         nameLabel.text = congressman.name
-        questionLabel.text = thisvote.question
-        resultLabel.text = thisvote.result
+        resultLabel.text = "Vote Result: " + thisvote.result
         
-        voteLabel.text = thisvote.voter_ids[congressman.bioGuideId]
+        voteLabel.text = "Vote: " + thisvote.voter_ids[congressman.bioGuideId]!
+        
+        
+        if congressman.chamber == "senate" {
+            questionLabel.text = thisvote.question
+        } else {
+            questionLabel.text = thisvote.title
+        }
+        
+        
         
         // Do any additional setup after loading the view.
     }
