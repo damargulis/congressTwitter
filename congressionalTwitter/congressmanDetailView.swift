@@ -77,7 +77,11 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         let vote = votes![indexPath.row]
         
-        cell.questionLabel.text = vote.question
+        if congressman.chamber == "senate" {
+            cell.questionLabel.text = vote.question
+        } else {
+            cell.questionLabel.text = vote.title
+        }
         
         
         return cell

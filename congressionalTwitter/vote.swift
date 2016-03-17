@@ -15,6 +15,7 @@ class vote: NSObject {
     var result: String!
     var voter_ids: [String: String]!
     
+    var title: String?
     
     init(dict: NSDictionary){
         
@@ -22,6 +23,11 @@ class vote: NSObject {
         question = dict["question"] as! String
         result = dict["result"] as! String
         voter_ids = dict["voter_ids"] as! [String: String]
+        
+        title = dict["bill"]?["popular_title"] as? String
+        if title == nil {
+            title = dict["bill"]?["official_title"] as? String
+        }
         
     }
     
