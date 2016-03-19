@@ -5,7 +5,7 @@ Features:
 
 - Login/logout to any twitter account
 - Find and view your personal congressional Representatives and Senators, found by GPS location
-- List all congresspeople, order by state and searchable by name
+- List all congresspeople, ordered by state and searchable by name
 - Click any congressperson to view details, see list of recent votes
 - List of votes searchable by topic, name
 - Click any vote  to view vote details
