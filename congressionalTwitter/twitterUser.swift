@@ -10,7 +10,7 @@ import UIKit
 
 class twitterUser: NSObject {
     
-    var _currentUser: twitterUser?
+
     
     var name: NSString?
     var dictionary: NSDictionary!
@@ -23,8 +23,9 @@ class twitterUser: NSObject {
         
     }
     
+    //track current logged in user
+    var _currentUser: twitterUser?
     static var _currentUser: twitterUser?
-    
     class var currentUser: twitterUser?{
         get {
             if _currentUser == nil{

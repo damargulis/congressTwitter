@@ -10,16 +10,12 @@ import UIKit
 
 class congressPerson: NSObject {
 
+    //Taken directly from API
     var firstName: String?
     var lastName: String?
     var middleName: String?
     var nameSuffix: String?
-    
-    var name: String?
-    
     var partyCode: String?
-    var partyName: String?
-    
     var stateCode: String?
     var stateName: String?
     var district: String?
@@ -27,12 +23,14 @@ class congressPerson: NSObject {
     var chamber: String?
     var termStart: String?
     var termEnd: String?
-    var term: String?
-    
     var bioGuideId: String!
-    
     var website: String?
     var twitterUsername: String?
+    
+    //Calculated
+    var name: String?
+    var partyName: String?
+    var term: String?
     
     init(entry: NSDictionary) {
         

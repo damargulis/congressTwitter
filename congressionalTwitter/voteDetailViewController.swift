@@ -15,16 +15,17 @@ class voteDetailViewController: UIViewController {
     @IBOutlet weak var voteLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var loginButton: UIBarButtonItem!
-    
     @IBOutlet weak var approveButton: UIButton!
     @IBOutlet weak var disapproveButton: UIButton!
     
     var congressman: congressPerson!
     var thisvote: vote!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Twitter login/logout control
         if twitterUser.currentUser != nil {
             
             loginButton.tag = 1
@@ -38,13 +39,11 @@ class voteDetailViewController: UIViewController {
         approveButton.tag = 0
         disapproveButton.tag = 1
         
-        
         nameLabel.text = congressman.name
         resultLabel.text = "Vote Result: " + thisvote.result
-        
         voteLabel.text = "Vote: " + thisvote.voter_ids[congressman.bioGuideId]!
         
-        
+        //Senate votes use question, House uses title
         if congressman.chamber == "senate" {
             questionLabel.text = thisvote.question
         } else {
@@ -61,7 +60,7 @@ class voteDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //Twitter login/logout controls
     @IBAction func onLogin(sender: AnyObject) {
         
         if (sender.tag == 0){
@@ -97,6 +96,8 @@ class voteDetailViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
+        
+        //Segue to tweet compose page
         let composeView = segue.destinationViewController as! composeViewController
         
         composeView.toCongressman = self.congressman

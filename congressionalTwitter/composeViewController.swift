@@ -47,6 +47,7 @@ class composeViewController: UIViewController, UITextViewDelegate {
     }
     
 
+    //Control character count
     func textViewDidChange(textView: UITextView) {
         let numCharacters = textView.text.characters.count
         
@@ -55,12 +56,13 @@ class composeViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    
+    //Send tweet
     @IBAction func onSend(sender: AnyObject) {
         twitterAPI.sharedInstance.postStatus(tweetTextView.text)
         self.dismissViewControllerAnimated(false, completion: nil)
     }
     
+    //Cancel tweet
     @IBAction func onCancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }

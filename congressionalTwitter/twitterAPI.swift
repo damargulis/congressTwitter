@@ -23,6 +23,7 @@ class twitterAPI: BDBOAuth1SessionManager {
     var loginSuccess: (() -> ())?
     var loginFailure: ((NSError)->())?
     
+    
     func handleOpenUrl(url: NSURL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
@@ -41,7 +42,7 @@ class twitterAPI: BDBOAuth1SessionManager {
         }
     }
 
-    
+    //get curret account
     func currentAccount(success: (twitterUser) -> (), failure: (NSError) -> ()){
         GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             
@@ -56,28 +57,7 @@ class twitterAPI: BDBOAuth1SessionManager {
         
     }
     
-    func loginWithCompletion(completion: (user: twitterUser?, error: NSError?) -> ()){
-        loginCompletion = completion
-        
-        
-        //fetch request token and redirect to auth page
-        twitterAPI.sharedInstance.requestSerializer.removeAccessToken()
-        twitterAPI.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "congressTwitter://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
-            
-            let authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
-            
-            UIApplication.sharedApplication().openURL(authURL!)
-            
-            
-            }) {(error: NSError!) -> Void in
-                print("error: \(error.localizedDescription)")
-                
-                self.loginCompletion?(user: nil, error: error)
-        }
-        
-        
-    }
-    
+    //login to twitter
     func login(success: () -> (), failure: (NSError)->()) {
         loginSuccess = success
         loginFailure = failure
@@ -93,6 +73,7 @@ class twitterAPI: BDBOAuth1SessionManager {
         }
     }
     
+    //logout of twitter
     func logout(){
         twitterUser.currentUser = nil
         deauthorize()
@@ -101,7 +82,7 @@ class twitterAPI: BDBOAuth1SessionManager {
         
     }
     
-    
+    //create and send tweet
     func postStatus(text: String!){
        
         

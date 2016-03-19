@@ -11,16 +11,12 @@ import UIKit
 class congressTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var partyLabel: UILabel!
-    
     @IBOutlet weak var stateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        
         
     }
 

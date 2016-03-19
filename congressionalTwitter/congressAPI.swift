@@ -18,6 +18,7 @@ class congressAPI: BDBOAuth1SessionManager {
     
     static let sharedInstance = congressAPI(baseURL: apiBaseUrl)
     
+    //Get a list of legislators, sorted in state order, searchable by name
     func getLegislators(page: Int, searchText: String?, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
         
         
@@ -49,6 +50,7 @@ class congressAPI: BDBOAuth1SessionManager {
         
     }
     
+    //Get the congressional representatives representing a specific location in the USA
     func getLocalLegislators(location: CLLocationCoordinate2D, success: ([congressPerson]) -> (), failure: (NSError) ->()){
         let parameters = ["apikey" : apiKey,
                         "latitude": location.latitude,
@@ -66,6 +68,8 @@ class congressAPI: BDBOAuth1SessionManager {
         
     }
     
+    
+    //Get the mose current votes from a specific congressperson
     func getVotesByLegislator(congressperson: congressPerson!, success: ([vote]) -> (), failure: (NSError) -> ()){
         
         let urlString = "votes?voter_ids.\(congressperson.bioGuideId)__exists=true"
@@ -84,6 +88,7 @@ class congressAPI: BDBOAuth1SessionManager {
         
     }
     
+    //Get a searchable list of the most recent votes from a certain congressperson
     func getVotesByLegislatorSearch(congressperson: congressPerson!, search: String!, success: ([vote]) -> (), failure: (NSError) -> ()){
         
         let urlString = "votes?voter_ids.\(congressperson.bioGuideId)__exists=true"
@@ -102,6 +107,7 @@ class congressAPI: BDBOAuth1SessionManager {
         
         
     }
+    
     
     
 }

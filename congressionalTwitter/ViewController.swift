@@ -11,15 +11,11 @@ import CoreLocation
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate, UISearchBarDelegate {
 
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     
-    var allCongressman: [congressPerson]?
-    var localCongressman: [congressPerson]?
-    var locationManager: CLLocationManager = CLLocationManager()
-    
-    var location: CLLocationCoordinate2D?
-    
+    //Local Representative Labels
     @IBOutlet weak var localName1Label: UILabel!
     @IBOutlet weak var localParty1Label: UILabel!
     @IBOutlet weak var localName2Label: UILabel!
@@ -27,13 +23,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var localName3Label: UILabel!
     @IBOutlet weak var localParty3Label: UILabel!
     
+    //Local Representative Taps
     @IBOutlet var tapGesture1: UITapGestureRecognizer!
     @IBOutlet var tapGesture2: UITapGestureRecognizer!
     @IBOutlet var tapGesture3: UITapGestureRecognizer!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var allCongressman: [congressPerson]?
+    var localCongressman: [congressPerson]?
     
+    //Locaiton Controls
+    var locationManager: CLLocationManager = CLLocationManager()
+    var location: CLLocationCoordinate2D?
+    
+    //Controls for inifinite scroll
     var isMoreDataLoading = false
     var page: Int!
     
@@ -45,42 +49,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.delegate = self
         page = 1
         
-        
+        //Request and get location
         self.locationManager.requestWhenInUseAuthorization()
-        
         if CLLocationManager.locationServicesEnabled(){
             
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
             location = locationManager.location?.coordinate
-            
-            
-            congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
-                self.localCongressman = people
-                self.localName1Label.text = self.localCongressman![0].name
-                self.localParty1Label.text = self.localCongressman![0].partyName
-                self.localName2Label.text = self.localCongressman![1].name
-                self.localParty2Label.text = self.localCongressman![1].partyName
-                self.localName3Label.text = self.localCongressman![2].name
-                self.localParty3Label.text = self.localCongressman![2].partyName
-                }, failure: { (error: NSError) -> () in
-                    print(error.localizedDescription)
-            })
-            
+
         }
         
+        //Twitter login/logout control
         if twitterUser.currentUser != nil {
             
             loginButton.tag = 1
             loginButton.title = "Logout"
             
         } else {
+            
             loginButton.tag = 0
             loginButton.title = "Login"
         }
         
-        //load congressdata into array
+        //load congress data into table
         congressAPI.sharedInstance.getLegislators(page, searchText: nil, success: { (people: [congressPerson]) -> () in
             self.allCongressman = people
             self.tableView.reloadData()
@@ -107,6 +99,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.partyLabel.text = congressman.partyName
         cell.stateLabel.text = congressman.stateName
         
+        //Control cell color by party
         if(congressman.partyCode == "D"){
             cell.backgroundColor = UIColor.blueColor()
             cell.nameLabel.textColor = UIColor.whiteColor()
@@ -131,7 +124,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
 
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let allCongressman = allCongressman{
             return allCongressman.count
@@ -140,7 +132,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    
+    //Twitter login/logout control
     @IBAction func onLogin(sender: AnyObject) {
         
         if (sender.tag == 0){
@@ -170,6 +162,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    
+    //Inifite scroll controls
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if !isMoreDataLoading {
             
@@ -208,10 +202,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let detailViewController = segue.destinationViewController as! congressmanDetailView
         
         if let cell = sender as? UITableViewCell{
+            //Sender is from table of congressmen
+            
             let indexPath = tableView.indexPathForCell(cell)
             let congressman = allCongressman![indexPath!.row]
             detailViewController.congressman = congressman
         } else {
+            //Sender is local congressmen
+            
             let x = sender as! UITapGestureRecognizer
             
             if(x.isEqual(tapGesture1)){
@@ -234,6 +232,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
 
+    
+    //Search bar controls
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.page = 1
         congressAPI.sharedInstance.getLegislators(page, searchText: searchBar.text, success: { (people: [congressPerson]) -> () in
@@ -255,7 +255,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.resignFirstResponder()
     }
     
-    
+    //Update location
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        location = manager.location?.coordinate
+        congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
+            self.localCongressman = people
+            self.localName1Label.text = self.localCongressman![0].name
+            self.localParty1Label.text = self.localCongressman![0].partyName
+            self.localName2Label.text = self.localCongressman![1].name
+            self.localParty2Label.text = self.localCongressman![1].partyName
+            self.localName3Label.text = self.localCongressman![2].name
+            self.localParty3Label.text = self.localCongressman![2].partyName
+            }, failure: { (error: NSError) -> () in
+                print(error.localizedDescription)
+        })
+        
+    }
     
 }
 

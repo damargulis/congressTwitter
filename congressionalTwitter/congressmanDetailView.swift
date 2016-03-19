@@ -30,6 +30,8 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         searchBar.delegate = self
         
+        
+        //control login button
         if twitterUser.currentUser != nil {
             loginButton.tag = 1
             loginButton.title = "Logout"
@@ -38,9 +40,13 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             loginButton.title = "Login"
         }
 
-        // Do any additional setup after loading the view.
+        //populate data
         nameLabel.text = congressman.name
+        chamberLabel.text = "Chamber: " + congressman.chamber!
+        partyLabel.text = "Party: " + congressman.partyName!
+        termLabel.text = "Current Term: " + congressman.term!
         
+        //populate vote cells
         congressAPI.sharedInstance.getVotesByLegislator(congressman, success: { (votes: [vote]) -> () in
             
             self.votes = votes
@@ -49,11 +55,8 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
-        
-        chamberLabel.text = "Chamber: " + congressman.chamber!
-        partyLabel.text = "Party: " + congressman.partyName!
-        termLabel.text = "Current Term: " + congressman.term!
-        
+
+        //get party image
         if (congressman.partyCode == "D"){
             
             partyImageView.image = UIImage(named: "Donkey")
@@ -68,6 +71,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             
         }
         
+        //tabeview autolayout control
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
     }
@@ -91,6 +95,8 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         let vote = votes![indexPath.row]
         
+        
+        //Senate votes use question, House uses title
         if congressman.chamber == "senate" {
             cell.questionLabel.text = vote.question
         } else {
@@ -102,35 +108,30 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     }
     
 
+    //Twitter login/logout controlls
     @IBAction func onLogin(sender: AnyObject) {
-        
         if (sender.tag == 0){
             let client = twitterAPI.sharedInstance
-            
             client.login({ () -> () in
-                
                 self.loginButton.title = "Logout"
                 self.loginButton.tag = 1
-                
                 }) { (error: NSError) -> () in
                     print(error.localizedDescription)
             }
-            
         } else {
-            
             twitterAPI.sharedInstance.logout()
-            
             loginButton.title = "Login"
             loginButton.tag = 0
-            
         }
-        
     }
     
+    
+    //Search Bar Controlls
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
+
         let search = searchBar.text
         if(search != nil){
+            
             congressAPI.sharedInstance.getVotesByLegislatorSearch(congressman, search: search, success: { (votes: [vote]) -> () in
             self.votes = votes
                 self.tableView.reloadData()
@@ -154,6 +155,8 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    //Seque to voteDetailView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
