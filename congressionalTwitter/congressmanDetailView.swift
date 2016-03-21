@@ -102,7 +102,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         } else {
             cell.questionLabel.text = vote.title
         }
-        
+        cell.layoutIfNeeded()
         
         return cell
     }
