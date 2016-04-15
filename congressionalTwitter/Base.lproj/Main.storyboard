@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ymu-OD-zGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ymu-OD-zGg">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -104,7 +104,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lDF-Cc-tAZ">
-                                <rect key="frame" x="0.0" y="324" width="320" height="244"/>
+                                <rect key="frame" x="0.0" y="360" width="320" height="208"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="tzx-ZM-Ioe">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -148,14 +148,27 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hhZ-7z-VYt">
+                                <rect key="frame" x="20" y="324" width="280" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="NGT-qd-Cdx"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="House"/>
+                                    <segment title="Senate"/>
+                                    <segment title="All Reps."/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.92549019607843142" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="vPk-88-cLa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4WZ-Vu-bzc"/>
-                            <constraint firstItem="lDF-Cc-tAZ" firstAttribute="top" secondItem="wdf-V2-Qnb" secondAttribute="bottom" constant="8" id="9fh-8p-dh0"/>
+                            <constraint firstAttribute="trailing" secondItem="hhZ-7z-VYt" secondAttribute="trailing" constant="20" id="5Zc-fw-NXy"/>
+                            <constraint firstItem="lDF-Cc-tAZ" firstAttribute="top" secondItem="hhZ-7z-VYt" secondAttribute="bottom" constant="8" id="9cg-1g-4I2"/>
                             <constraint firstItem="wdf-V2-Qnb" firstAttribute="top" secondItem="5PV-Pa-RrN" secondAttribute="bottom" constant="6" id="CFg-3g-PzW"/>
                             <constraint firstItem="f9T-XE-eM7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="IJc-39-pNq"/>
                             <constraint firstAttribute="trailing" secondItem="fDt-Gn-QmZ" secondAttribute="trailing" constant="20" id="IVr-p2-4bM"/>
+                            <constraint firstItem="hhZ-7z-VYt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="M9b-22-4Ih"/>
                             <constraint firstItem="fDt-Gn-QmZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="OvI-pe-MhD"/>
                             <constraint firstItem="vPk-88-cLa" firstAttribute="top" secondItem="e4V-Ef-ek4" secondAttribute="bottom" constant="3" id="QsM-gY-cHp"/>
                             <constraint firstItem="5PV-Pa-RrN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="RNs-4j-Hzx"/>
@@ -166,6 +179,7 @@
                             <constraint firstItem="lDF-Cc-tAZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iZ4-t6-Yx6"/>
                             <constraint firstItem="5PV-Pa-RrN" firstAttribute="top" secondItem="f9T-XE-eM7" secondAttribute="bottom" constant="8" id="jpT-4t-WWb"/>
                             <constraint firstAttribute="trailing" secondItem="lDF-Cc-tAZ" secondAttribute="trailing" id="mt5-88-til"/>
+                            <constraint firstItem="hhZ-7z-VYt" firstAttribute="top" secondItem="wdf-V2-Qnb" secondAttribute="bottom" constant="8" id="nag-Ib-K0u"/>
                             <constraint firstAttribute="trailing" secondItem="vPk-88-cLa" secondAttribute="trailing" id="o32-iB-96B"/>
                             <constraint firstAttribute="trailing" secondItem="f9T-XE-eM7" secondAttribute="trailing" constant="20" id="qSN-hb-il0"/>
                             <constraint firstItem="3ve-Kt-2RO" firstAttribute="top" secondItem="lDF-Cc-tAZ" secondAttribute="bottom" id="tk8-0c-w1A"/>
@@ -180,6 +194,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chamberControl" destination="hhZ-7z-VYt" id="dLU-R1-fla"/>
                         <outlet property="localName1Label" destination="o80-Rp-1u8" id="CC7-9P-Tt1"/>
                         <outlet property="localName2Label" destination="gSg-mR-oHo" id="9lW-JR-mbh"/>
                         <outlet property="localName3Label" destination="GbH-lX-vNx" id="aFG-BF-58P"/>

@@ -11,6 +11,7 @@ import CoreLocation
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIScrollViewDelegate, UISearchBarDelegate {
 
+    @IBOutlet weak var chamberControl: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginButton: UIBarButtonItem!
@@ -49,6 +50,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.delegate = self
         page = 1
         
+        chamberControl.selectedSegmentIndex = 2
+        chamberControl.addTarget(self, action: "chamberDidChange:", forControlEvents: .ValueChanged)
+
+        
+        
         //Request and get location
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
@@ -73,7 +79,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         //load congress data into table
-        congressAPI.sharedInstance.getLegislators(page, searchText: nil, success: { (people: [congressPerson]) -> () in
+        congressAPI.sharedInstance.getLegislators(page, searchText: nil, chamber: nil, success: { (people: [congressPerson]) -> () in
             self.allCongressman = people
             self.tableView.reloadData()
             self.page = self.page + 1
@@ -94,6 +100,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("congressCell", forIndexPath: indexPath) as! congressTableViewCell
+        
+        
+  
+        
+        
         let congressman = allCongressman![indexPath.row]
         cell.nameLabel.text = congressman.name
         cell.partyLabel.text = congressman.partyName
@@ -179,8 +190,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func loadMoreData(){
+        var chamber: String?
+        if(chamberControl.selectedSegmentIndex == 1){
+            chamber = "senate"
+        } else if(chamberControl.selectedSegmentIndex == 0){
+            chamber = "house"
+        }
         
-        congressAPI.sharedInstance.getLegislators(page, searchText: self.searchBar.text, success: { (nextPage: [congressPerson]) -> () in
+        congressAPI.sharedInstance.getLegislators(page, searchText: self.searchBar.text, chamber: chamber, success: { (nextPage: [congressPerson]) -> () in
             for item in nextPage{
                 self.allCongressman?.append(item)
             }
@@ -236,7 +253,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //Search bar controls
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         self.page = 1
-        congressAPI.sharedInstance.getLegislators(page, searchText: searchBar.text, success: { (people: [congressPerson]) -> () in
+        var chamber: String?
+        if(chamberControl.selectedSegmentIndex == 1){
+            chamber = "senate"
+        } else if(chamberControl.selectedSegmentIndex == 0){
+            chamber = "house"
+        }
+        
+        congressAPI.sharedInstance.getLegislators(page, searchText: searchBar.text, chamber: chamber, success: { (people: [congressPerson]) -> () in
             self.allCongressman = people
             self.tableView.reloadData()
             }) { (error: NSError) -> () in
@@ -270,7 +294,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(error.localizedDescription)
         })
         
+        manager.stopUpdatingLocation()
     }
+    
+    func chamberDidChange(sender: UISegmentedControl){
+        var chamber: String?
+        if(chamberControl.selectedSegmentIndex == 1){
+            chamber = "senate"
+        } else if(chamberControl.selectedSegmentIndex == 0){
+            chamber = "house"
+        }
+        
+        page = 1
+        congressAPI.sharedInstance.getLegislators(page, searchText: self.searchBar.text, chamber: chamber, success: { (nextPage: [congressPerson]) -> () in
+            self.allCongressman = nextPage
+            
+            self.tableView.reloadData()
+            self.page = self.page + 1
+            self.isMoreDataLoading = false
+            
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        
+    }
+    
+    
+    
     
 }
 

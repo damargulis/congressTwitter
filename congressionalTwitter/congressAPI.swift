@@ -19,25 +19,21 @@ class congressAPI: BDBOAuth1SessionManager {
     static let sharedInstance = congressAPI(baseURL: apiBaseUrl)
     
     //Get a list of legislators, sorted in state order, searchable by name
-    func getLegislators(page: Int, searchText: String?, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
+    func getLegislators(page: Int, searchText: String?, chamber: String?, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
         
         
-        var parameters: NSDictionary!
-        
+        var parameters: Dictionary<String, NSObject>!
+        parameters = ["order": "state__asc,last_name__asc", "page": page]
         if let searchText = searchText{
-            
-            parameters = ["order": "state__asc,last_name__asc",
-                "page": page,
-                "query": searchText]
-            
-        } else {
-            
-            parameters = ["order": "state__asc,last_name__asc",
-                "page": page]
-            
+            parameters["query"] = searchText
         }
+        if let chamber = chamber{
+            parameters["chamber"] = chamber
+        }
+        
+        let newParameters = parameters as NSDictionary
     
-        GET("legislators?apikey=\(apiKey)", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+        GET("legislators?apikey=\(apiKey)", parameters: newParameters, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             
             let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary])
             success(people)
