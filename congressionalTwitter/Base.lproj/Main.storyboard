@@ -247,7 +247,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="164" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="80O-WN-hAM">
-                                <rect key="frame" x="0.0" y="200" width="320" height="368"/>
+                                <rect key="frame" x="0.0" y="237" width="320" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="rJ7-9K-wJk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -308,6 +308,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXa-Nq-UC3">
+                                <rect key="frame" x="22" y="199" width="278" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="z8E-HO-DNG"/>
+                                </constraints>
+                                <state key="normal" title="View Contributors">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.080225848229999994" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pZM-g8-J3n" kind="push" id="G3q-D9-kgT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87450980392156863" green="0.90588235294117647" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -316,15 +330,18 @@
                             <constraint firstAttribute="trailing" secondItem="80O-WN-hAM" secondAttribute="trailing" id="BHC-t1-wCS"/>
                             <constraint firstItem="Jkc-bc-9VM" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="20" id="DUm-wg-SwO"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jkc-bc-9VM" secondAttribute="trailing" constant="4" id="De1-y7-3Qo"/>
-                            <constraint firstItem="80O-WN-hAM" firstAttribute="top" secondItem="na9-lz-dHz" secondAttribute="bottom" constant="13" id="HzV-az-en4"/>
+                            <constraint firstItem="XXa-Nq-UC3" firstAttribute="top" secondItem="na9-lz-dHz" secondAttribute="bottom" constant="12" id="Gnh-xW-mN4"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vEx-mB-B5X" secondAttribute="trailing" constant="8" id="IWQ-8o-fNU"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="na9-lz-dHz" secondAttribute="trailing" constant="10" id="NLS-vt-1DF"/>
                             <constraint firstItem="na9-lz-dHz" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="22" id="QSP-fj-Wmo"/>
                             <constraint firstAttribute="trailing" secondItem="XMp-9u-vFF" secondAttribute="trailing" constant="6" id="Rpq-qE-6v5"/>
+                            <constraint firstItem="XXa-Nq-UC3" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="22" id="U7g-hP-XUU"/>
                             <constraint firstItem="vEx-mB-B5X" firstAttribute="top" secondItem="n1r-ze-tb2" secondAttribute="bottom" constant="7.5" id="UVD-cV-fCW"/>
                             <constraint firstItem="T73-df-Egw" firstAttribute="top" secondItem="80O-WN-hAM" secondAttribute="bottom" id="bLj-HG-783"/>
+                            <constraint firstItem="80O-WN-hAM" firstAttribute="top" secondItem="XXa-Nq-UC3" secondAttribute="bottom" constant="8" id="df5-zY-e8f"/>
                             <constraint firstItem="80O-WN-hAM" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" id="e0m-cx-3YF"/>
                             <constraint firstItem="vEx-mB-B5X" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="20" id="f3O-ZK-SgM"/>
+                            <constraint firstAttribute="trailing" secondItem="XXa-Nq-UC3" secondAttribute="trailing" constant="20" id="iMQ-pN-rkJ"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="top" secondItem="e07-ER-KVD" secondAttribute="bottom" constant="8" id="khG-bm-qn9"/>
                             <constraint firstItem="Jkc-bc-9VM" firstAttribute="top" secondItem="e07-ER-KVD" secondAttribute="bottom" constant="20" id="nLa-nl-tWC"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="n1r-ze-tb2" secondAttribute="trailing" constant="8" id="nfx-5q-HRh"/>
@@ -353,6 +370,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEJ-um-hlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1038" y="298"/>
+        </scene>
+        <!--Contributors View Controller-->
+        <scene sceneID="Vq5-pv-TuA">
+            <objects>
+                <viewController id="pZM-g8-J3n" customClass="contributorsViewController" customModule="congressionalTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rWO-xb-1cK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ryh-OK-Ee4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ACh-y9-vtC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSM-oc-bkr">
+                                <rect key="frame" x="136" y="76" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lVp-Ss-ycJ"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="zSM-oc-bkr" id="fnA-si-ylP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yuK-EU-4KG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="1007"/>
         </scene>
         <!--Vote Details-->
         <scene sceneID="xXq-aa-HUW">
@@ -568,6 +615,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="D9D-Op-1f3"/>
-        <segue reference="PYZ-Mu-wLr"/>
+        <segue reference="Cdu-1I-lUi"/>
     </inferredMetricsTieBreakers>
 </document>

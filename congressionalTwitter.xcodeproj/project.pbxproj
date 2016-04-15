@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A48691CC09C7000427138 /* opensecretsAPI.swift */; };
+		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
 		399AED951C927E3500AE488F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED941C927E3500AE488F /* ViewController.swift */; };
 		399AED981C927E3500AE488F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399AED961C927E3500AE488F /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		0433A8EABE488768BCA0805B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		398A48691CC09C7000427138 /* opensecretsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opensecretsAPI.swift; sourceTree = "<group>"; };
+		398A486D1CC0A78300427138 /* contributorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorsViewController.swift; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399AED921C927E3500AE488F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399AED941C927E3500AE488F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 			children = (
 				399AEDAB1C9282A400AE488F /* congressAPI.swift */,
 				399AEDB81C97BA4200AE488F /* twitterAPI.swift */,
+				398A48691CC09C7000427138 /* opensecretsAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				399AED941C927E3500AE488F /* ViewController.swift */,
 				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
 				399AEDBE1C9A34CB00AE488F /* composeViewController.swift */,
+				398A486D1CC0A78300427138 /* contributorsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -281,7 +287,9 @@
 				399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */,
 				399AED951C927E3500AE488F /* ViewController.swift in Sources */,
 				399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */,
+				398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */,
 				399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */,
+				398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */,
 				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,
 				399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */,
 				399AED931C927E3500AE488F /* AppDelegate.swift in Sources */,

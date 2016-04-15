@@ -168,7 +168,12 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             let detailViewController = segue.destinationViewController as! voteDetailViewController
             detailViewController.congressman = congressman
             detailViewController.thisvote = avote
+        } else if let _ = sender as? UIButton{
+            let contributorViewController = segue.destinationViewController as! contributorsViewController
+            contributorViewController.congressperson = congressman
         }
+            
+        
     }
 
     
