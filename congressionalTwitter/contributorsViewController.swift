@@ -15,11 +15,22 @@ class contributorsViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = congressperson.name
-        // Do any additional setup after loading the view.
+        
+        opensecretsAPI.sharedInstance.getContributors(congressperson!, success: { (result: [NSDictionary]) -> () in
+            //do something with result
+            print(result)
+            
+            
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {

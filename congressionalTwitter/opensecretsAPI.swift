@@ -10,7 +10,7 @@ import UIKit
 import BDBOAuth1Manager
 
 let opensecretApiKey = "fba2da9eab14c612bde22145fe7a7bac"
-let opensecretApiBaseUrl = NSURL(string: "http://www.opensecrets.org/")
+let opensecretApiBaseUrl = NSURL(string: "https://www.opensecrets.org/")
 
 
 class opensecretsAPI: BDBOAuth1SessionManager {
@@ -19,19 +19,21 @@ class opensecretsAPI: BDBOAuth1SessionManager {
 
     func getContributors(congressperson: congressPerson!, success: ([NSDictionary]) -> (), failure: (NSError) -> ()){
         
-        let parameters = ["method": "candContrib",
-            "cpr_ip": congressperson.crpId,
-            "output": "json"] as NSDictionary
+        let parameters = [
+            "cid": congressperson.crpId,
+            "output": "json",
+            "apikey": opensecretApiKey] as NSDictionary
         
         
-        GET("api/", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+        GET("api/?method=candContrib", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             let results = response!["results"] as! [NSDictionary]
+            print("here success")
             success(results)
             
             
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-                
+                print("here fail")
                 failure(error)
         }
         
