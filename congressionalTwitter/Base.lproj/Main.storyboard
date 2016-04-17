@@ -247,7 +247,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="164" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="80O-WN-hAM">
-                                <rect key="frame" x="0.0" y="237" width="320" height="331"/>
+                                <rect key="frame" x="0.0" y="273" width="320" height="295"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="rJ7-9K-wJk">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -283,6 +283,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zcq-K9-koq">
+                                <rect key="frame" x="22" y="237" width="278" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="afP-O1-JDk"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Past Votes"/>
+                                    <segment title="Sponsored Bills"/>
+                                </segments>
+                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chamber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1r-ze-tb2">
                                 <rect key="frame" x="20" y="113" width="70.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -327,6 +337,7 @@
                         <constraints>
                             <constraint firstItem="n1r-ze-tb2" firstAttribute="top" secondItem="Jkc-bc-9VM" secondAttribute="bottom" constant="8.5" id="0Oh-PF-CWq"/>
                             <constraint firstItem="T73-df-Egw" firstAttribute="top" secondItem="80O-WN-hAM" secondAttribute="bottom" id="5xb-YL-tx1"/>
+                            <constraint firstItem="zcq-K9-koq" firstAttribute="top" secondItem="XXa-Nq-UC3" secondAttribute="bottom" constant="8" id="98z-9h-dws"/>
                             <constraint firstAttribute="trailing" secondItem="80O-WN-hAM" secondAttribute="trailing" id="BHC-t1-wCS"/>
                             <constraint firstItem="Jkc-bc-9VM" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="20" id="DUm-wg-SwO"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jkc-bc-9VM" secondAttribute="trailing" constant="4" id="De1-y7-3Qo"/>
@@ -337,10 +348,12 @@
                             <constraint firstAttribute="trailing" secondItem="XMp-9u-vFF" secondAttribute="trailing" constant="6" id="Rpq-qE-6v5"/>
                             <constraint firstItem="XXa-Nq-UC3" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="22" id="U7g-hP-XUU"/>
                             <constraint firstItem="vEx-mB-B5X" firstAttribute="top" secondItem="n1r-ze-tb2" secondAttribute="bottom" constant="7.5" id="UVD-cV-fCW"/>
+                            <constraint firstItem="80O-WN-hAM" firstAttribute="top" secondItem="zcq-K9-koq" secondAttribute="bottom" constant="8" id="ZPO-tO-bbo"/>
+                            <constraint firstItem="zcq-K9-koq" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="22" id="ajJ-oh-ywB"/>
                             <constraint firstItem="T73-df-Egw" firstAttribute="top" secondItem="80O-WN-hAM" secondAttribute="bottom" id="bLj-HG-783"/>
-                            <constraint firstItem="80O-WN-hAM" firstAttribute="top" secondItem="XXa-Nq-UC3" secondAttribute="bottom" constant="8" id="df5-zY-e8f"/>
                             <constraint firstItem="80O-WN-hAM" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" id="e0m-cx-3YF"/>
                             <constraint firstItem="vEx-mB-B5X" firstAttribute="leading" secondItem="syN-kK-sFb" secondAttribute="leading" constant="20" id="f3O-ZK-SgM"/>
+                            <constraint firstAttribute="trailing" secondItem="zcq-K9-koq" secondAttribute="trailing" constant="20" id="huv-VZ-AnG"/>
                             <constraint firstAttribute="trailing" secondItem="XXa-Nq-UC3" secondAttribute="trailing" constant="20" id="iMQ-pN-rkJ"/>
                             <constraint firstItem="XMp-9u-vFF" firstAttribute="top" secondItem="e07-ER-KVD" secondAttribute="bottom" constant="8" id="khG-bm-qn9"/>
                             <constraint firstItem="Jkc-bc-9VM" firstAttribute="top" secondItem="e07-ER-KVD" secondAttribute="bottom" constant="20" id="nLa-nl-tWC"/>
@@ -365,6 +378,7 @@
                         <outlet property="searchBar" destination="rJ7-9K-wJk" id="oJD-SI-erz"/>
                         <outlet property="tableView" destination="80O-WN-hAM" id="EWm-Uh-lw4"/>
                         <outlet property="termLabel" destination="na9-lz-dHz" id="Obe-IY-8R9"/>
+                        <outlet property="voteControl" destination="zcq-K9-koq" id="ZDo-Mb-cm6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEJ-um-hlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -518,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8tk-DC-HhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1416" y="298"/>
+            <point key="canvasLocation" x="1408" y="42"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="DsC-Ya-Wbh">
@@ -592,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zb8-Hn-2jW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="298"/>
+            <point key="canvasLocation" x="1838" y="42"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xbX-47-Kkz">

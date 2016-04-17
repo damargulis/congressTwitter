@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		393B77A11CC4221B00E93AB7 /* bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B77A01CC4221B00E93AB7 /* bill.swift */; };
 		398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A48691CC09C7000427138 /* opensecretsAPI.swift */; };
 		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		0433A8EABE488768BCA0805B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		393B77A01CC4221B00E93AB7 /* bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bill.swift; sourceTree = "<group>"; };
 		398A48691CC09C7000427138 /* opensecretsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opensecretsAPI.swift; sourceTree = "<group>"; };
 		398A486D1CC0A78300427138 /* contributorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorsViewController.swift; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 				399AEDA81C927FD800AE488F /* congressPerson.swift */,
 				399AEDB41C979BC400AE488F /* vote.swift */,
 				399AEDBA1C97BCD300AE488F /* twitterUser.swift */,
+				393B77A01CC4221B00E93AB7 /* bill.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */,
 				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,
 				399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */,
+				393B77A11CC4221B00E93AB7 /* bill.swift in Sources */,
 				399AED931C927E3500AE488F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

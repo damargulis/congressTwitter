@@ -21,17 +21,28 @@ class composeViewController: UIViewController, UITextViewDelegate {
     var approve: Bool!
     var toCongressman: congressPerson!
     var thisVote: vote!
+    var thisBill: bill!
     var theyVoted: String!
+    
+    var type: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tweetTextView.delegate = self
         
-        if approve == true {
-            tweetTextView.text = ".@\(toCongressman.twitterUsername!) I approve of your vote of \(theyVoted) on \(thisVote.rollID)!"
-        } else {
-            tweetTextView.text = ".@\(toCongressman.twitterUsername!) I disapprove of your vote of \(theyVoted) on \(thisVote.rollID)!"
+        if(type == 0){
+            if approve == true {
+                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I approve of your vote of \(theyVoted) on \(thisVote!.rollID)!"
+            } else {
+                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I disapprove of your vote of \(theyVoted) on \(thisVote!.rollID)!"
+            }
+        }else if(type == 1){
+            if approve == true{
+                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I approve of your sponsored bill: \(thisBill!.billId!)!"
+            } else{
+                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I disapprove of your sponsored bill: \(thisBill!.billId!)!"
+            }
         }
         
         let charLeft = 140 - tweetTextView.text.characters.count
