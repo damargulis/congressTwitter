@@ -8,6 +8,7 @@
 
 import UIKit
 import BDBOAuth1Manager
+import CoreLocation
 
 let openStatesApiKey = "520539ff8eda4bd1b6be5c0e6d1691f5"
 let openStatesApiBaseUrl = NSURL(string: "http://openstates.org/api/v1/")
@@ -16,13 +17,32 @@ class openStatesAPI: BDBOAuth1SessionManager {
 
     static let sharedInstance = openStatesAPI(baseURL: openStatesApiBaseUrl)
     
-    func getMetaData(){
+    func getMetaData(success: ([state]) -> (), failure: (NSError) -> ()){
         
         GET("metadata/", parameters: ["apikey": openStatesApiKey], progress: nil, success: { (opeartion:NSURLSessionDataTask, response: AnyObject?) -> Void in
             print(response)
+            let states = state.stateDictToArray(response as! [NSDictionary])
+            success(states)
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
-                print(error.localizedDescription)
+                failure(error)
         }
+    }
+    
+    func getLegislatorsByLocation(location: CLLocationCoordinate2D, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
+        
+        let parameters = ["apikey" : apiKey,
+            "lat": location.latitude,
+            "long": location.longitude
+        ]
+        
+        GET("legislators/geo/", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            print(response)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+        
     }
     
 }
