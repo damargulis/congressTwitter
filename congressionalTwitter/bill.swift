@@ -4,10 +4,8 @@
 //
 //  Created by Daniel Margulis on 4/17/16.
 //  Copyright © 2016 Daniel Margulis. All rights reserved.
-//
 
 import UIKit
-
 class bill: NSObject {
     
     var billId: String?
@@ -32,11 +30,6 @@ class bill: NSObject {
         nicknames = dict["nicknames"] as? [String]
         summary = dict["summary"] as? String
         summary_short = dict["summary_short"] as? String
-        
-        print(billId)
-        print(official_title)
-        print(popular_title)
-        print(short_title)
         
     }
     
