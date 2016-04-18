@@ -12,6 +12,7 @@
 		3926CCDA1CC43AD400A40AEE /* openStatesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926CCD91CC43AD400A40AEE /* openStatesAPI.swift */; };
 		3926CCDC1CC43C1E00A40AEE /* stateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */; };
 		393B77A11CC4221B00E93AB7 /* bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B77A01CC4221B00E93AB7 /* bill.swift */; };
+		3943C36C1CC5A2D5002F28F4 /* contributorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */; };
 		398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A48691CC09C7000427138 /* opensecretsAPI.swift */; };
 		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		3926CCD91CC43AD400A40AEE /* openStatesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openStatesAPI.swift; sourceTree = "<group>"; };
 		3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateViewController.swift; sourceTree = "<group>"; };
 		393B77A01CC4221B00E93AB7 /* bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bill.swift; sourceTree = "<group>"; };
+		3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorTableViewCell.swift; sourceTree = "<group>"; };
 		398A48691CC09C7000427138 /* opensecretsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opensecretsAPI.swift; sourceTree = "<group>"; };
 		398A486D1CC0A78300427138 /* contributorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorsViewController.swift; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +153,7 @@
 				399AEDB21C979ACC00AE488F /* detailTableViewCell.swift */,
 				39098C181CC4408800ED4477 /* stateTableViewCell.swift */,
 				391F99DA1CC55363005E7A44 /* stateDetailTableViewCell.swift */,
+				3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				399AEDA71C927EE500AE488F /* congressTableViewCell.swift in Sources */,
+				3943C36C1CC5A2D5002F28F4 /* contributorTableViewCell.swift in Sources */,
 				399AEDAC1C9282A400AE488F /* congressAPI.swift in Sources */,
 				399AEDB31C979ACC00AE488F /* detailTableViewCell.swift in Sources */,
 				399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */,
