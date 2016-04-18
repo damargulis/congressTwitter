@@ -28,6 +28,24 @@ class openStatesAPI: BDBOAuth1SessionManager {
         }
     }
     
+    func getLegislatorsByState(stateToSearch: state!, chamber: String?, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
+        
+        var parameters = ["apikey": openStatesApiKey,]
+        parameters["state"] = stateToSearch.abbreviation
+        if let chamber = chamber{
+            parameters["chamber"] = chamber
+        }
+        
+        GET("legislators/", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            let people = congressPerson.congressPersonDictToArray(response as! [NSDictionary], type: 1)
+            success(people)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+    }
+    
     func getLegislatorsByLocation(location: CLLocationCoordinate2D, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
         
         let parameters = ["apikey" : apiKey,

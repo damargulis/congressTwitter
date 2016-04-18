@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		39098C191CC4408800ED4477 /* stateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39098C181CC4408800ED4477 /* stateTableViewCell.swift */; };
+		391F99DB1CC55363005E7A44 /* stateDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391F99DA1CC55363005E7A44 /* stateDetailTableViewCell.swift */; };
 		3926CCDA1CC43AD400A40AEE /* openStatesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926CCD91CC43AD400A40AEE /* openStatesAPI.swift */; };
 		3926CCDC1CC43C1E00A40AEE /* stateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */; };
 		393B77A11CC4221B00E93AB7 /* bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B77A01CC4221B00E93AB7 /* bill.swift */; };
@@ -37,6 +38,7 @@
 		0433A8EABE488768BCA0805B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D662EDAE325B89DDE005A2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		39098C181CC4408800ED4477 /* stateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateTableViewCell.swift; sourceTree = "<group>"; };
+		391F99DA1CC55363005E7A44 /* stateDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateDetailTableViewCell.swift; sourceTree = "<group>"; };
 		3926CCD91CC43AD400A40AEE /* openStatesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openStatesAPI.swift; sourceTree = "<group>"; };
 		3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateViewController.swift; sourceTree = "<group>"; };
 		393B77A01CC4221B00E93AB7 /* bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bill.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				399AEDA61C927EE500AE488F /* congressTableViewCell.swift */,
 				399AEDB21C979ACC00AE488F /* detailTableViewCell.swift */,
 				39098C181CC4408800ED4477 /* stateTableViewCell.swift */,
+				391F99DA1CC55363005E7A44 /* stateDetailTableViewCell.swift */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */,
 				398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */,
 				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,
+				391F99DB1CC55363005E7A44 /* stateDetailTableViewCell.swift in Sources */,
 				3926CCDC1CC43C1E00A40AEE /* stateViewController.swift in Sources */,
 				399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */,
 				393B77A11CC4221B00E93AB7 /* bill.swift in Sources */,

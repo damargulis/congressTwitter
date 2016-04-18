@@ -35,7 +35,7 @@ class congressAPI: BDBOAuth1SessionManager {
     
         GET("legislators?apikey=\(apiKey)", parameters: newParameters, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             
-            let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary])
+            let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary], type: 0)
             success(people)
             
             
@@ -54,7 +54,7 @@ class congressAPI: BDBOAuth1SessionManager {
         ]
         
         GET("legislators/locate", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary])
+            let people = congressPerson.congressPersonDictToArray(response!["results"] as! [NSDictionary], type: 0)
             success(people)
             
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in

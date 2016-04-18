@@ -9,24 +9,42 @@
 import UIKit
 import CoreLocation
 
-class stateDetailViewController: UIViewController, CLLocationManagerDelegate{
+class stateDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    var curstate: state!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var flagImageView: UIImageView!
+    @IBOutlet weak var chamberControl: UISegmentedControl!
+    @IBOutlet weak var tableView: UITableView!
     
-    var locationManager: CLLocationManager = CLLocationManager()
-    var location: CLLocationCoordinate2D?
+    
+    
+    var curstate: state!
+    var people: [congressPerson]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        if CLLocationManager.locationServicesEnabled(){
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            location = locationManager.location?.coordinate
-            
+        nameLabel.text = curstate.name
+        chamberControl.removeAllSegments()
+        var i = 0
+        for chamber in curstate.chambers{
+            let name = chamber.1["name"]
+            chamberControl.insertSegmentWithTitle(name as? String, atIndex: i, animated: false)
+            i = i + 1
         }
+        chamberControl.insertSegmentWithTitle("All Representatives", atIndex: i, animated: false)
+        
+        openStatesAPI.sharedInstance.getLegislatorsByState(curstate, chamber: nil, success: { (people: [congressPerson]) -> () in
+            
+            self.people = people
+            self.tableView.reloadData()
+            
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+
         
         // Do any additional setup after loading the view.
     }
@@ -36,21 +54,23 @@ class stateDetailViewController: UIViewController, CLLocationManagerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = manager.location?.coordinate
-        
-        openStatesAPI.sharedInstance.getLegislatorsByLocation(location!, success: { (people: [congressPerson]) -> () in
-            for person in people{
-                print(person.name)
-            }
-            }) { (error: NSError) -> () in
-                print(error.localizedDescription)
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let people  = people{
+            return people.count
+        } else{
+            return 0
         }
-        
-        manager.stopUpdatingLocation()
     }
-
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("stateDetailCell", forIndexPath: indexPath) as! stateDetailTableViewCell
+        let rep = people![indexPath.row]
+        cell.nameLabel.text = rep.name
+        cell.partyLabel.text = rep.partyName
+        cell.districtLabel.text = "District \(rep.district!)"
+        return cell
+        
+    }
 
     /*
     // MARK: - Navigation
