@@ -20,6 +20,7 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     var curstate: state!
     var people: [congressPerson]?
+    var chambers: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
             let name = chamber.1["name"]
             chamberControl.insertSegmentWithTitle(name as? String, atIndex: i, animated: false)
             i = i + 1
+            chambers.append(chamber.key as! String)
         }
         chamberControl.insertSegmentWithTitle("All Representatives", atIndex: i, animated: false)
         
@@ -45,6 +47,8 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
                 print(error.localizedDescription)
         }
 
+        chamberControl.selectedSegmentIndex = i
+        chamberControl.addTarget(self, action: "chamberDidChange:", forControlEvents: .ValueChanged)
         
         // Do any additional setup after loading the view.
     }
@@ -56,6 +60,7 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let people  = people{
+            print(people.count)
             return people.count
         } else{
             return 0
@@ -72,6 +77,23 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
 
+    func chamberDidChange(sender: UISegmentedControl){
+        var chamber: String?
+        if(sender.selectedSegmentIndex < chambers.count){
+            chamber = chambers[sender.selectedSegmentIndex]
+        }
+        print(chamber)
+        
+        openStatesAPI.sharedInstance.getLegislatorsByState(curstate, chamber: chamber, success: { (people: [congressPerson]) -> () in
+            self.people = people
+            self.tableView.reloadData()
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        
+        
+    }
+    
     /*
     // MARK: - Navigation
 

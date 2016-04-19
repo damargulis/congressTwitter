@@ -14,11 +14,8 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
 
     var congressperson: congressPerson!
     var orgs: [NSDictionary]?
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var partyLabel: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -44,10 +41,9 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
         let org1 = orgs![indexPath.row]
         let org = org1["@attributes"] as! NSDictionary
         cell.nameLabel.text = org["org_name"] as? String
-        cell.individualLabel.text = "Individuals: \(org["indivs"] as! String)"
-        cell.pacLabel.text = "PAC's: \(org["pacs"]as! String)"
+        cell.individualLabel.text = "Individuals: $\(org["indivs"] as! String)"
+        cell.pacLabel.text = "PAC's: $\(org["pacs"]as! String)"
         return cell
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
