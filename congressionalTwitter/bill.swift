@@ -20,6 +20,10 @@ class bill: NSObject {
     var summary: String?
     var summary_short: String?
     
+    
+    //for state:
+    var title: String?
+    
     init(dict: NSDictionary){
         
         billId = dict["bill_id"] as? String
@@ -31,6 +35,8 @@ class bill: NSObject {
         summary = dict["summary"] as? String
         summary_short = dict["summary_short"] as? String
         
+        
+        title = dict["title"] as? String
     }
     
     class func billsDictToArray(array: [NSDictionary]) -> [bill] {

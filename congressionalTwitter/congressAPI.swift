@@ -104,12 +104,16 @@ class congressAPI: BDBOAuth1SessionManager {
         
     }
     
-    func getSponsoredBills(congressperson: congressPerson!, success: ([bill]) -> (), failure: (NSError) -> ()){
+    func getSponsoredBills(congressperson: congressPerson!, searchText: String?, success: ([bill]) -> (), failure: (NSError) -> ()){
         
         let urlString = "/bills"
-        let parameter = ["sponsor.bioguide_id": congressperson.bioGuideId,
+        var parameter = ["sponsor.bioguide_id": congressperson.bioGuideId,
             "apikey": apiKey,
             "history.active": "true"]
+        if let search = searchText{
+            parameter["query"] = search
+        }
+        
         GET(urlString, parameters: parameter, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             let dicts = response!["results"] as! [NSDictionary]
             let bills = bill.billsDictToArray(dicts)

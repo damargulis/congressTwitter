@@ -55,7 +55,14 @@ class voteDetailViewController: UIViewController {
         }else if let thisbill = thisbill{
             
             resultLabel.text = "Bill id: " + thisbill.billId!
-            voteLabel.text = "Official Title: " +  thisbill.official_title!
+            
+            if let title = thisbill.official_title{
+                voteLabel.text = "Title: \(title)"
+            } else if let title = thisbill.title{
+                voteLabel.text = "Title: \(title)"
+            }
+            
+            
             if let summary = thisbill.summary{
                 questionLabel.text = summary
             } else{

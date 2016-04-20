@@ -20,7 +20,6 @@ class openStatesAPI: BDBOAuth1SessionManager {
     func getMetaData(success: ([state]) -> (), failure: (NSError) -> ()){
         
         GET("metadata/", parameters: ["apikey": openStatesApiKey], progress: nil, success: { (opeartion:NSURLSessionDataTask, response: AnyObject?) -> Void in
-            print(response)
             let states = state.stateDictToArray(response as! [NSDictionary])
             success(states)
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
@@ -48,19 +47,35 @@ class openStatesAPI: BDBOAuth1SessionManager {
     
     func getLegislatorsByLocation(location: CLLocationCoordinate2D, success: ([congressPerson]) -> (), failure: (NSError) -> ()){
         
-        let parameters = ["apikey" : apiKey,
+        let parameters = ["apikey" : openStatesApiKey,
             "lat": location.latitude,
             "long": location.longitude
         ]
         
         GET("legislators/geo/", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
-            print(response)
+            let people = congressPerson.congressPersonDictToArray(response as! [NSDictionary], type: 1)
+            success(people)
             
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         }
         
+    }
+    
+    func getSponsoredBills(rep: congressPerson!, success: ([bill]) -> (), failure: (NSError) -> ()){
+        
+        
+        var p = ["apikey": openStatesApiKey]
+        p["state"] = rep.stateCode
+        p["sponsor_id"] = rep.legID
+        
+        GET("bills/", parameters: p, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let bills = bill.billsDictToArray(response as! [NSDictionary])
+            success(bills)
+            }) { (opeartion: NSURLSessionDataTask?, error: NSError) -> Void in
+                print(error.localizedDescription)
+        }
     }
     
 }

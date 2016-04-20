@@ -14,12 +14,37 @@ class twitterUser: NSObject {
     
     var name: NSString?
     var dictionary: NSDictionary!
+    var screenname: String?
+    var profileImageUrl: NSURL?
+    var headerImageUrl: NSURL?
+    var tagline: String?
+    var followerCount: Int?
+    var followingCount: Int?
+    var tweetCount: Int?
+    var location: String?
     
     static let userDidLogoutNotification = "UserDidLogout"
     
     init(dictionary: NSDictionary){
         self.dictionary = dictionary
         name = dictionary["name"] as? String
+        screenname = dictionary["screen_name"] as? String
+        let imageUrl = dictionary["profile_image_url"] as? String
+        if let imageUrl = imageUrl{
+            profileImageUrl = NSURL(string: imageUrl)
+        }
+        let headerUrl = dictionary["profile_banner_url"] as? String
+        if let headerUrl = headerUrl{
+            headerImageUrl = NSURL(string: headerUrl)
+        }
+        
+        
+        tagline = dictionary["description"] as? String
+        followerCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
+        tweetCount = dictionary["statuses_count"] as? Int
+        
+        location = dictionary["location"] as? String
         
     }
     

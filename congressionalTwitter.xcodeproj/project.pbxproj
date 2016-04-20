@@ -13,6 +13,7 @@
 		3926CCDC1CC43C1E00A40AEE /* stateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */; };
 		393B77A11CC4221B00E93AB7 /* bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B77A01CC4221B00E93AB7 /* bill.swift */; };
 		3943C36C1CC5A2D5002F28F4 /* contributorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */; };
+		3968351E1CC6F4F900B1864B /* profiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968351D1CC6F4F900B1864B /* profiveViewController.swift */; };
 		398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A48691CC09C7000427138 /* opensecretsAPI.swift */; };
 		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 		3926CCDB1CC43C1E00A40AEE /* stateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateViewController.swift; sourceTree = "<group>"; };
 		393B77A01CC4221B00E93AB7 /* bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bill.swift; sourceTree = "<group>"; };
 		3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorTableViewCell.swift; sourceTree = "<group>"; };
+		3968351D1CC6F4F900B1864B /* profiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profiveViewController.swift; sourceTree = "<group>"; };
 		398A48691CC09C7000427138 /* opensecretsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opensecretsAPI.swift; sourceTree = "<group>"; };
 		398A486D1CC0A78300427138 /* contributorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorsViewController.swift; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +82,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		391AB88E1CC81B7500EC61A1 /* Mutable Use */ = {
+			isa = PBXGroup;
+			children = (
+				399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */,
+			);
+			name = "Mutable Use";
+			sourceTree = "<group>";
+		};
+		391AB88F1CC81B9C00EC61A1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3968351D1CC6F4F900B1864B /* profiveViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		399AED861C927E3500AE488F = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +158,8 @@
 		399AEDAE1C93365600AE488F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				391AB88F1CC81B9C00EC61A1 /* Profile */,
+				391AB88E1CC81B7500EC61A1 /* Mutable Use */,
 				39DAED111CC452C000968988 /* State */,
 				39DAED101CC452BA00968988 /* National */,
 			);
@@ -165,7 +185,6 @@
 				399AEDBE1C9A34CB00AE488F /* composeViewController.swift */,
 				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
 				399AED941C927E3500AE488F /* ViewController.swift */,
-				399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */,
 			);
 			name = National;
 			sourceTree = "<group>";
@@ -332,6 +351,7 @@
 				399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */,
 				398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */,
 				39098C191CC4408800ED4477 /* stateTableViewCell.swift in Sources */,
+				3968351E1CC6F4F900B1864B /* profiveViewController.swift in Sources */,
 				399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */,
 				398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */,
 				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,

@@ -47,29 +47,39 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         }
         
         //populate data
-        nameLabel.text = congressman.name
-        chamberLabel.text = "Chamber: " + congressman.chamber!
-        partyLabel.text = "Party: " + congressman.partyName!
-        termLabel.text = "Current Term: " + congressman.term!
-        
-        //populate vote and bills cells
+        if let name = congressman.name{
+            nameLabel.text = name
+        }
+        if let chamber = congressman.chamber{
+            chamberLabel.text = "Chamber: " + chamber
+        }
+        if let party = congressman.partyName{
+            partyLabel.text = "Party: " + party
+        }
+        if let term = congressman.term{
+            termLabel.text = "Current Term: " + term
+        }
+
+            //populate vote and bills cells
         getPastVotes()
         getSponsoredBills()
+
         
-        //get party image
-        if (congressman.partyCode == "D"){
-            
-            partyImageView.image = UIImage(named: "Donkey")
-            
-        } else if (congressman.partyCode == "R"){
-            
-            partyImageView.image = UIImage(named: "Elephant")
-            
-        } else {
-            
-            partyImageView.image = UIImage(named: "Congress")
-            
+        
+        
+        if let url = congressman.photoUrl{
+            partyImageView.setImageWithURL(NSURL(string: url)!)
+        } else{
+            //get party image
+            if (congressman.partyCode == "D"){
+                partyImageView.image = UIImage(named: "Donkey")
+            } else if (congressman.partyCode == "R"){
+                partyImageView.image = UIImage(named: "Elephant")
+            } else {
+                partyImageView.image = UIImage(named: "Congress")
+            }
         }
+        
         
         //tabeview autolayout control
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -101,6 +111,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func getPastVotes(){
+        if(congressman.type == 0){
         congressAPI.sharedInstance.getVotesByLegislator(congressman, success: { (votes: [vote]) -> () in
             
             self.pastVotes = votes
@@ -109,23 +120,36 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+        } else if(congressman.type == 1){
+            
+        }
     }
     
     func getSponsoredBills(){
-        congressAPI.sharedInstance.getSponsoredBills(congressman, success: { (bills: [bill]) -> () in
+        if(congressman.type == 0){
+        congressAPI.sharedInstance.getSponsoredBills(congressman, searchText: nil, success: { (bills: [bill]) -> () in
             
             self.sponsoredBills = bills
             self.tableView.reloadData()
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+        } else if(congressman.type == 1){
+            
+            openStatesAPI.sharedInstance.getSponsoredBills(congressman, success: { (bills: [bill]) -> () in
+                self.sponsoredBills = bills
+                self.tableView.reloadData()
+                }, failure: { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            })
+            
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("detailTableCell") as! detailTableViewCell
-        
-        
+                
         if(voteControl.selectedSegmentIndex == 0){
             let vote = pastVotes![indexPath.row]
             //Senate votes use question, House uses title
@@ -136,7 +160,11 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             }
         }else if(voteControl.selectedSegmentIndex == 1){
             let bill = sponsoredBills![indexPath.row]
-            cell.questionLabel.text = bill.official_title
+            if let title = bill.official_title{
+                cell.questionLabel.text = title
+            }else if let title = bill.title{
+                cell.questionLabel.text = title
+            }
             
         }
         cell.layoutIfNeeded()
@@ -165,16 +193,32 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     
     //Search Bar Controlls
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        
         let search = searchBar.text
+        
         if(search != nil){
-            
-            congressAPI.sharedInstance.getVotesByLegislatorSearch(congressman, search: search, success: { (votes: [vote]) -> () in
-                self.pastVotes = votes
-                self.tableView.reloadData()
-                }, failure: { (error: NSError) -> () in
-                    print(error.localizedDescription)
-            })
+            if(voteControl.selectedSegmentIndex == 0){
+                
+                if(congressman.type == 0){
+                    congressAPI.sharedInstance.getVotesByLegislatorSearch(congressman, search: search, success: { (votes: [vote]) -> () in
+                        self.pastVotes = votes
+                        self.tableView.reloadData()
+                        }, failure: { (error: NSError) -> () in
+                            print(error.localizedDescription)
+                    })
+                }
+                
+            } else if(voteControl.selectedSegmentIndex == 1){
+                
+                if(congressman.type == 0){
+                    congressAPI.sharedInstance.getSponsoredBills(congressman, searchText: search, success: { (bills: [bill]) -> () in
+                        self.sponsoredBills = bills
+                        self.tableView.reloadData()
+                        }, failure: { (error: NSError) -> () in
+                            print(error.localizedDescription)
+                    })
+                }
+                
+            }
         }
     }
     

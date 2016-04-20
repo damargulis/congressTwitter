@@ -19,8 +19,6 @@ class opensecretsAPI: BDBOAuth1SessionManager {
     
     func getContributorsManual(congressman: congressPerson!, success: NSDictionary -> ()){
         
-        
-        
         let url = NSURL(string: "https://www.opensecrets.org/api/?method=candContrib&apikey=\(opensecretApiKey)&output=json&cid=\(congressman.crpId)")
         
         let request = NSURLRequest(

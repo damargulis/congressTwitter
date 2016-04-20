@@ -35,12 +35,12 @@ class congressPerson: NSObject {
     var website: String?
     var twitterUsername: String?
     var term: String?
+    var ocd_ID: String?
     
     //state
     var photoUrl: String?
     var legID: String?
     
-    //Taken directly from API
 
 
 
@@ -93,6 +93,7 @@ class congressPerson: NSObject {
             
             bioGuideId = entry["bioguide_id"] as? String
             crpId = entry["crp_id"] as? String
+            ocd_ID = entry["ocd_id"] as? String
             
             website = entry["website"] as? String
             twitterUsername = entry["twitter_id"] as? String
@@ -127,7 +128,9 @@ class congressPerson: NSObject {
             legID = entry["leg_id"] as? String
         }
         
-        
+        if let ocdid = ocd_ID{
+            print(ocdid)
+        }
     }
     
     

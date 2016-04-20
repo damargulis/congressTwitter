@@ -60,7 +60,6 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let people  = people{
-            print(people.count)
             return people.count
         } else{
             return 0
@@ -82,7 +81,6 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         if(sender.selectedSegmentIndex < chambers.count){
             chamber = chambers[sender.selectedSegmentIndex]
         }
-        print(chamber)
         
         openStatesAPI.sharedInstance.getLegislatorsByState(curstate, chamber: chamber, success: { (people: [congressPerson]) -> () in
             self.people = people
@@ -94,14 +92,27 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+//        if let cell = sender as? stateDetailTableViewCell{
+//            let ip = tableView.indexPathForCell(cell)
+//            let dvc = segue.destinationViewController as? stateRepDetailViewController
+//            dvc?.rep = people![ip!.row]
+//            dvc?.curState = curstate
+//        }
+        if let cell = sender as? stateDetailTableViewCell{
+            let ip = tableView.indexPathForCell(cell)
+            let dvc = segue.destinationViewController as! congressmanDetailView
+            dvc.congressman = people![(ip?.row)!]
+        }
+        
     }
-    */
+    
 
 }
