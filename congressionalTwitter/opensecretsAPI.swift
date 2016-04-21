@@ -49,6 +49,79 @@ class opensecretsAPI: BDBOAuth1SessionManager {
         
     }
     
+    func getOrganizationSummaryFromName(name: String!, success: (organization) -> ()){
+        
+        let newName = name.stringByReplacingOccurrencesOfString(" ", withString: "_")
+        let urlString = "https://www.opensecrets.org/api/?method=getOrgs&apikey=\(opensecretApiKey)&output=json&org=\(newName)"
+        print(urlString)
+        let url = NSURL(string: urlString)
+        
+        
+        let request = NSURLRequest(
+            URL: url!,
+            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+            timeoutInterval: 10)
+        
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate: nil,
+            delegateQueue: NSOperationQueue.mainQueue()
+        )
+        var id: String?
+        
+        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                            let response = responseDictionary["response"] as! NSDictionary
+                            let organization = response["organization"] as! NSDictionary
+                            let attributes = organization["@attributes"] as! NSDictionary
+                            id = attributes["orgid"] as? String
+                            self.getOrgSummaryFromID(id, success: success)
+                    }
+                }
+                
+        })
+
+        task.resume()
+    }
+    
+    private func getOrgSummaryFromID(id: String!, success: (organization) -> ()){
+        
+        let urlString = "https://www.opensecrets.org/api/?method=orgSummary&apikey=\(opensecretApiKey)&output=json&id=\(id)"
+        let url = NSURL(string: urlString)
+        let request = NSURLRequest(
+            URL: url!,
+            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+            timeoutInterval: 10)
+        
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate: nil,
+            delegateQueue: NSOperationQueue.mainQueue()
+        )
+
+        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                            
+                            let response = responseDictionary["response"] as! NSDictionary
+                            let orgs = response["organization"] as! NSDictionary
+                            let attributes = orgs["@attributes"] as! NSDictionary
+                            let org = organization(dict: attributes)
+                            success(org)
+                    }
+                }
+                
+        })
+        
+        task.resume()
+        
+    }
+    
     func getContributors(congressperson: congressPerson!, success: ([NSDictionary]) -> (), failure: (NSError) -> ()){
         //Doesnt work!
         

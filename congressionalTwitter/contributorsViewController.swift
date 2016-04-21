@@ -64,14 +64,25 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let cell = sender as? contributorTableViewCell{
+            let dvc = segue.destinationViewController as? organizationViewController
+            let ip = tableView.indexPathForCell(cell)
+            let org1 = orgs![ip!.row]
+            let org = org1["@attributes"] as! NSDictionary
+            
+            dvc?.name = org["org_name"] as? String
+            
+            
+        }
+        
     }
-    */
+    
 
 }

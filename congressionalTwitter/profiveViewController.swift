@@ -73,7 +73,9 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         print("didtap")
     }
     
-    @IBAction func onChangeLocation(sender: AnyObject) {
+    
+    
+    @IBAction func onCurrentLocation(sender: UIButton) {
         
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
@@ -84,6 +86,12 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
             location = locationManager.location?.coordinate
             
         }
+    }
+    
+    @IBAction func onChangeLocation(sender: AnyObject) {
+        
+
+
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -108,7 +116,6 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
-        
         
         manager.stopUpdatingLocation()
     }
@@ -140,12 +147,9 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         
         let dvc = segue.destinationViewController as! congressmanDetailView
         if let cell = sender as? profileStateTableViewCell{
-
             let ip = self.stateTableView.indexPathForCell(cell)
             dvc.congressman = state![ip!.row]
-            
         } else{
-            
             let gr = sender as! UITapGestureRecognizer
             if let v = gr.view{
                 if(v == nationalView1){
@@ -156,10 +160,7 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
                     dvc.congressman = national![2]
                 }
             }
-            
         }
-        
     }
-    
 
 }

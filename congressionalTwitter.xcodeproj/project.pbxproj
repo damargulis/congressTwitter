@@ -14,6 +14,9 @@
 		393B77A11CC4221B00E93AB7 /* bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393B77A01CC4221B00E93AB7 /* bill.swift */; };
 		3943C36C1CC5A2D5002F28F4 /* contributorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */; };
 		3968351E1CC6F4F900B1864B /* profiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3968351D1CC6F4F900B1864B /* profiveViewController.swift */; };
+		3983A72F1CC9629A003C1E05 /* googleCivicDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983A72E1CC9629A003C1E05 /* googleCivicDataAPI.swift */; };
+		3983A7311CC97687003C1E05 /* organizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983A7301CC97687003C1E05 /* organizationViewController.swift */; };
+		3983A7331CC97811003C1E05 /* organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983A7321CC97811003C1E05 /* organization.swift */; };
 		398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A48691CC09C7000427138 /* opensecretsAPI.swift */; };
 		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
@@ -47,6 +50,9 @@
 		393B77A01CC4221B00E93AB7 /* bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bill.swift; sourceTree = "<group>"; };
 		3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorTableViewCell.swift; sourceTree = "<group>"; };
 		3968351D1CC6F4F900B1864B /* profiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profiveViewController.swift; sourceTree = "<group>"; };
+		3983A72E1CC9629A003C1E05 /* googleCivicDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = googleCivicDataAPI.swift; sourceTree = "<group>"; };
+		3983A7301CC97687003C1E05 /* organizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organizationViewController.swift; sourceTree = "<group>"; };
+		3983A7321CC97811003C1E05 /* organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = organization.swift; sourceTree = "<group>"; };
 		398A48691CC09C7000427138 /* opensecretsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = opensecretsAPI.swift; sourceTree = "<group>"; };
 		398A486D1CC0A78300427138 /* contributorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contributorsViewController.swift; sourceTree = "<group>"; };
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +147,7 @@
 				399AEDB81C97BA4200AE488F /* twitterAPI.swift */,
 				398A48691CC09C7000427138 /* opensecretsAPI.swift */,
 				3926CCD91CC43AD400A40AEE /* openStatesAPI.swift */,
+				3983A72E1CC9629A003C1E05 /* googleCivicDataAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -153,6 +160,7 @@
 				399AEDBA1C97BCD300AE488F /* twitterUser.swift */,
 				393B77A01CC4221B00E93AB7 /* bill.swift */,
 				39DAED0C1CC44ACE00968988 /* state.swift */,
+				3983A7321CC97811003C1E05 /* organization.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -188,6 +196,7 @@
 				399AEDBE1C9A34CB00AE488F /* composeViewController.swift */,
 				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
 				399AED941C927E3500AE488F /* ViewController.swift */,
+				3983A7301CC97687003C1E05 /* organizationViewController.swift */,
 			);
 			name = National;
 			sourceTree = "<group>";
@@ -351,16 +360,19 @@
 				39BE05551CC860BF002E184E /* profileStateTableViewCell.swift in Sources */,
 				399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */,
 				39DAED0D1CC44ACE00968988 /* state.swift in Sources */,
+				3983A7311CC97687003C1E05 /* organizationViewController.swift in Sources */,
 				399AED951C927E3500AE488F /* ViewController.swift in Sources */,
 				399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */,
 				398A486A1CC09C7000427138 /* opensecretsAPI.swift in Sources */,
 				39098C191CC4408800ED4477 /* stateTableViewCell.swift in Sources */,
 				3968351E1CC6F4F900B1864B /* profiveViewController.swift in Sources */,
 				399AEDA91C927FD800AE488F /* congressPerson.swift in Sources */,
+				3983A72F1CC9629A003C1E05 /* googleCivicDataAPI.swift in Sources */,
 				398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */,
 				399AEDB01C93367B00AE488F /* congressmanDetailView.swift in Sources */,
 				391F99DB1CC55363005E7A44 /* stateDetailTableViewCell.swift in Sources */,
 				3926CCDC1CC43C1E00A40AEE /* stateViewController.swift in Sources */,
+				3983A7331CC97811003C1E05 /* organization.swift in Sources */,
 				399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */,
 				393B77A11CC4221B00E93AB7 /* bill.swift in Sources */,
 				3926CCDA1CC43AD400A40AEE /* openStatesAPI.swift in Sources */,

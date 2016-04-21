@@ -128,9 +128,7 @@ class congressPerson: NSObject {
             legID = entry["leg_id"] as? String
         }
         
-        if let ocdid = ocd_ID{
-            print(ocdid)
-        }
+
     }
     
     
