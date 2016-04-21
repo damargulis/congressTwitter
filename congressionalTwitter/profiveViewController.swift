@@ -69,10 +69,21 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
+    func didTap(sender: UIGestureRecognizer){
+        print("didtap")
+    }
     
     @IBAction func onChangeLocation(sender: AnyObject) {
         
-        
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled(){
+            
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            location = locationManager.location?.coordinate
+            
+        }
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -86,7 +97,6 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
-        
         congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
             self.national = people
             self.nationalNameLabel1.text = "\(people[0].firstName!) \(people[0].lastName!)"
@@ -119,14 +129,37 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let dvc = segue.destinationViewController as! congressmanDetailView
+        if let cell = sender as? profileStateTableViewCell{
+
+            let ip = self.stateTableView.indexPathForCell(cell)
+            dvc.congressman = state![ip!.row]
+            
+        } else{
+            
+            let gr = sender as! UITapGestureRecognizer
+            if let v = gr.view{
+                if(v == nationalView1){
+                    dvc.congressman = national![0]
+                }else if(v == nationalView2){
+                    dvc.congressman = national![1]
+                }else if(v == nationalView3){
+                    dvc.congressman = national![2]
+                }
+            }
+            
+        }
+        
     }
-    */
+    
 
 }
