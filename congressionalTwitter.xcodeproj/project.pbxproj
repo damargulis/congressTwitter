@@ -31,6 +31,7 @@
 		399AEDB91C97BA4200AE488F /* twitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDB81C97BA4200AE488F /* twitterAPI.swift */; };
 		399AEDBB1C97BCD300AE488F /* twitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDBA1C97BCD300AE488F /* twitterUser.swift */; };
 		399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDBE1C9A34CB00AE488F /* composeViewController.swift */; };
+		39BE05551CC860BF002E184E /* profileStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE05541CC860BF002E184E /* profileStateTableViewCell.swift */; };
 		39DAED0D1CC44ACE00968988 /* state.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0C1CC44ACE00968988 /* state.swift */; };
 		39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */; };
 		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
@@ -65,6 +66,7 @@
 		399AEDB81C97BA4200AE488F /* twitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twitterAPI.swift; sourceTree = "<group>"; };
 		399AEDBA1C97BCD300AE488F /* twitterUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twitterUser.swift; sourceTree = "<group>"; };
 		399AEDBE1C9A34CB00AE488F /* composeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = composeViewController.swift; sourceTree = "<group>"; };
+		39BE05541CC860BF002E184E /* profileStateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileStateTableViewCell.swift; sourceTree = "<group>"; };
 		39DAED0C1CC44ACE00968988 /* state.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = state.swift; sourceTree = "<group>"; };
 		39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateDetailViewController.swift; sourceTree = "<group>"; };
 		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				39098C181CC4408800ED4477 /* stateTableViewCell.swift */,
 				391F99DA1CC55363005E7A44 /* stateDetailTableViewCell.swift */,
 				3943C36B1CC5A2D5002F28F4 /* contributorTableViewCell.swift */,
+				39BE05541CC860BF002E184E /* profileStateTableViewCell.swift */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */,
 				399AEDB51C979BC400AE488F /* vote.swift in Sources */,
 				39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */,
+				39BE05551CC860BF002E184E /* profileStateTableViewCell.swift in Sources */,
 				399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */,
 				39DAED0D1CC44ACE00968988 /* state.swift in Sources */,
 				399AED951C927E3500AE488F /* ViewController.swift in Sources */,

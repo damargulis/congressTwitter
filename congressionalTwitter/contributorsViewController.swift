@@ -27,6 +27,7 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
+        if(congressperson.type == 0){
         opensecretsAPI.sharedInstance.getContributorsManual(congressperson, success: { (response: NSDictionary) -> () in
             
             
@@ -34,6 +35,9 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
             self.tableView.reloadData()
             print(self.orgs)
         })
+        } else if(congressperson.type == 1){
+            partyLabel.text = "Not currently available"
+        }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
