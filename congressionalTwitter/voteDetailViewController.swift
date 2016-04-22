@@ -22,7 +22,6 @@ class voteDetailViewController: UIViewController {
     var thisvote: vote?
     var thisbill: bill?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

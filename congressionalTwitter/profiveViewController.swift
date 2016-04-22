@@ -69,12 +69,6 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    func didTap(sender: UIGestureRecognizer){
-        print("didtap")
-    }
-    
-    
-    
     @IBAction func onCurrentLocation(sender: UIButton) {
         
         self.locationManager.requestWhenInUseAuthorization()
@@ -86,12 +80,6 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
             location = locationManager.location?.coordinate
             
         }
-    }
-    
-    @IBAction func onChangeLocation(sender: AnyObject) {
-        
-
-
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -145,21 +133,24 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let dvc = segue.destinationViewController as! congressmanDetailView
-        if let cell = sender as? profileStateTableViewCell{
-            let ip = self.stateTableView.indexPathForCell(cell)
-            dvc.congressman = state![ip!.row]
-        } else{
-            let gr = sender as! UITapGestureRecognizer
-            if let v = gr.view{
-                if(v == nationalView1){
-                    dvc.congressman = national![0]
-                }else if(v == nationalView2){
-                    dvc.congressman = national![1]
-                }else if(v == nationalView3){
-                    dvc.congressman = national![2]
+        if let dvc = segue.destinationViewController as? congressmanDetailView{
+            if let cell = sender as? profileStateTableViewCell{
+                let ip = self.stateTableView.indexPathForCell(cell)
+                dvc.congressman = state![ip!.row]
+            } else{
+                let gr = sender as! UITapGestureRecognizer
+                if let v = gr.view{
+                    if(v == nationalView1){
+                        dvc.congressman = national![0]
+                    }else if(v == nationalView2){
+                        dvc.congressman = national![1]
+                    }else if(v == nationalView3){
+                        dvc.congressman = national![2]
+                    }
                 }
             }
+        } else{
+            
         }
     }
 

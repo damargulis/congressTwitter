@@ -37,6 +37,7 @@
 		39BE05551CC860BF002E184E /* profileStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BE05541CC860BF002E184E /* profileStateTableViewCell.swift */; };
 		39DAED0D1CC44ACE00968988 /* state.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0C1CC44ACE00968988 /* state.swift */; };
 		39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */; };
+		39E3A7F21CC9D7550073B67C /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3A7F11CC9D7550073B67C /* settingsViewController.swift */; };
 		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		39BE05541CC860BF002E184E /* profileStateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileStateTableViewCell.swift; sourceTree = "<group>"; };
 		39DAED0C1CC44ACE00968988 /* state.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = state.swift; sourceTree = "<group>"; };
 		39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateDetailViewController.swift; sourceTree = "<group>"; };
+		39E3A7F11CC9D7550073B67C /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3968351D1CC6F4F900B1864B /* profiveViewController.swift */,
+				39E3A7F11CC9D7550073B67C /* settingsViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				393B77A11CC4221B00E93AB7 /* bill.swift in Sources */,
 				3926CCDA1CC43AD400A40AEE /* openStatesAPI.swift in Sources */,
 				399AED931C927E3500AE488F /* AppDelegate.swift in Sources */,
+				39E3A7F21CC9D7550073B67C /* settingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

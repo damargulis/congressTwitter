@@ -606,6 +606,33 @@
             </objects>
             <point key="canvasLocation" x="1570" y="981"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="hyK-NB-5S4">
+            <objects>
+                <viewController id="PSQ-yL-RQ0" customClass="settingsViewController" customModule="congressionalTwitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="03F-30-6uY"/>
+                        <viewControllerLayoutGuide type="bottom" id="QMc-XN-4Jq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eCH-vY-Kqm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9P-gz-oQY">
+                                <rect key="frame" x="117" y="198" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qxl-yx-79A"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsO-Fi-8Rj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1570" y="-402"/>
+        </scene>
         <!--Contributors View Controller-->
         <scene sceneID="Vq5-pv-TuA">
             <objects>
@@ -711,7 +738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuK-EU-4KG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1940" y="-341"/>
+            <point key="canvasLocation" x="1932" y="-402"/>
         </scene>
         <!--Organization View Controller-->
         <scene sceneID="jo2-Ud-dSw">
@@ -769,7 +796,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIO-LM-fWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2314" y="-341"/>
+            <point key="canvasLocation" x="2314" y="-402"/>
         </scene>
         <!--Vote Details-->
         <scene sceneID="xXq-aa-HUW">
@@ -789,18 +816,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How congressman voted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-Rt-sSV">
-                                <rect key="frame" x="20" y="356" width="280" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qZ-Cq-pQC">
-                                <rect key="frame" x="200" y="427" width="100" height="70"/>
+                                <rect key="frame" x="200" y="425" width="100" height="70"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.080225848229999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="2as-9c-QH5"/>
                                     <constraint firstAttribute="height" constant="70" id="Af2-dr-1Pb"/>
                                     <constraint firstAttribute="width" constant="100" id="DJC-mp-bJe"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="HjG-XC-i1Y"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="XEC-nY-fSY"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="ZOP-PA-dVn"/>
                                 </constraints>
                                 <state key="normal" title="Disapprove">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -815,23 +840,30 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-kq-v0m">
-                                <rect key="frame" x="21" y="385.5" width="280" height="20.5"/>
+                                <rect key="frame" x="20" y="396" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XQ-Ue-CT4">
-                                <rect key="frame" x="20" y="106" width="280" height="20.5"/>
+                                <rect key="frame" x="20" y="105" width="280" height="254"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="254" id="cuP-Nm-2VN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-gv-ZYP">
-                                <rect key="frame" x="20" y="427" width="100" height="70"/>
+                                <rect key="frame" x="20" y="425" width="100" height="70"/>
                                 <color key="backgroundColor" red="0.16162922242803879" green="1" blue="0.00083137051921844396" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="EvS-Kc-Vio"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="IaI-uF-T5q"/>
                                     <constraint firstAttribute="width" constant="100" id="PtW-ak-RyC"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="hgZ-R9-1uF"/>
                                     <constraint firstAttribute="height" constant="70" id="l4T-p1-nOB"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="w8f-R7-mtJ"/>
                                 </constraints>
                                 <state key="normal" title="Approve">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -845,28 +877,31 @@
                                     <segue destination="9p5-WX-f4s" kind="modal" id="Cdu-1I-lUi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How congressman voted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-Rt-sSV">
+                                <rect key="frame" x="20" y="367" width="280" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.84313725490196079" green="0.88235294117647056" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="kvg-Rt-sSV" secondAttribute="trailing" constant="20" id="0i2-lg-Xfg"/>
-                            <constraint firstItem="sey-NE-2Uu" firstAttribute="top" secondItem="sHw-ce-AsL" secondAttribute="bottom" constant="13" id="3ZB-tY-Fqq"/>
-                            <constraint firstAttribute="trailing" secondItem="w8A-kq-v0m" secondAttribute="trailing" constant="19" id="6Qi-Fg-DwK"/>
-                            <constraint firstAttribute="trailing" secondItem="6qZ-Cq-pQC" secondAttribute="trailing" constant="20" id="7bD-sc-FVC"/>
-                            <constraint firstItem="w8A-kq-v0m" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="21" id="8iA-p2-qnh"/>
-                            <constraint firstItem="BrR-ue-Rjn" firstAttribute="top" secondItem="P6w-gv-ZYP" secondAttribute="bottom" constant="22" id="Av4-hR-Ffk"/>
-                            <constraint firstAttribute="trailing" secondItem="kvg-Rt-sSV" secondAttribute="trailing" constant="20" id="ECR-bI-SsI"/>
-                            <constraint firstItem="BrR-ue-Rjn" firstAttribute="top" secondItem="6qZ-Cq-pQC" secondAttribute="bottom" constant="21.5" id="FTM-ea-0VB"/>
-                            <constraint firstItem="kvg-Rt-sSV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8XQ-Ue-CT4" secondAttribute="bottom" constant="10" id="LrW-DR-HvK"/>
-                            <constraint firstItem="8XQ-Ue-CT4" firstAttribute="top" secondItem="sey-NE-2Uu" secondAttribute="bottom" constant="8.5" id="OgM-oc-d79"/>
-                            <constraint firstItem="sey-NE-2Uu" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="Pep-rC-Ojs"/>
-                            <constraint firstAttribute="trailing" secondItem="sey-NE-2Uu" secondAttribute="trailing" constant="20" id="QmQ-am-C8O"/>
-                            <constraint firstItem="kvg-Rt-sSV" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="RZR-uZ-Mjh"/>
-                            <constraint firstItem="w8A-kq-v0m" firstAttribute="top" secondItem="kvg-Rt-sSV" secondAttribute="bottom" constant="8.5" id="UUd-me-ADn"/>
-                            <constraint firstItem="8XQ-Ue-CT4" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="Vmt-pO-9l5"/>
-                            <constraint firstItem="kvg-Rt-sSV" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="XPb-DH-uAi"/>
-                            <constraint firstItem="P6w-gv-ZYP" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="gFE-f9-CDy"/>
-                            <constraint firstAttribute="trailing" secondItem="8XQ-Ue-CT4" secondAttribute="trailing" constant="20" id="mYy-C6-5vY"/>
-                            <constraint firstItem="6qZ-Cq-pQC" firstAttribute="top" secondItem="w8A-kq-v0m" secondAttribute="bottom" constant="21" id="wnk-2U-ucO"/>
+                            <constraint firstItem="kvg-Rt-sSV" firstAttribute="top" secondItem="8XQ-Ue-CT4" secondAttribute="bottom" constant="8" id="6dG-23-5Gz"/>
+                            <constraint firstAttribute="trailing" secondItem="kvg-Rt-sSV" secondAttribute="trailing" constant="20" id="6eC-JK-371"/>
+                            <constraint firstItem="8XQ-Ue-CT4" firstAttribute="top" secondItem="sey-NE-2Uu" secondAttribute="bottom" constant="7.5" id="Gk4-R8-4WW"/>
+                            <constraint firstItem="w8A-kq-v0m" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="HTR-Jq-FyR"/>
+                            <constraint firstItem="sey-NE-2Uu" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="LXc-Fy-PZZ"/>
+                            <constraint firstAttribute="trailing" secondItem="w8A-kq-v0m" secondAttribute="trailing" constant="20" id="OaT-Mj-TRj"/>
+                            <constraint firstItem="w8A-kq-v0m" firstAttribute="top" secondItem="kvg-Rt-sSV" secondAttribute="bottom" constant="8.5" id="S2X-lc-MO1"/>
+                            <constraint firstItem="sey-NE-2Uu" firstAttribute="top" secondItem="sHw-ce-AsL" secondAttribute="bottom" constant="13" id="VBi-2j-YWX"/>
+                            <constraint firstItem="8XQ-Ue-CT4" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="X6q-Zg-BxC"/>
+                            <constraint firstAttribute="trailing" secondItem="8XQ-Ue-CT4" secondAttribute="trailing" constant="20" id="Z1F-DM-yra"/>
+                            <constraint firstItem="P6w-gv-ZYP" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="bb4-fs-hGx"/>
+                            <constraint firstItem="BrR-ue-Rjn" firstAttribute="top" secondItem="6qZ-Cq-pQC" secondAttribute="bottom" constant="24" id="bcs-bj-T9q"/>
+                            <constraint firstAttribute="trailing" secondItem="6qZ-Cq-pQC" secondAttribute="trailing" constant="20" id="cJu-Jq-Tjx"/>
+                            <constraint firstItem="BrR-ue-Rjn" firstAttribute="top" secondItem="P6w-gv-ZYP" secondAttribute="bottom" constant="24" id="cyx-bg-5WI"/>
+                            <constraint firstAttribute="trailing" secondItem="sey-NE-2Uu" secondAttribute="trailing" constant="20" id="gII-I4-Hvh"/>
+                            <constraint firstItem="kvg-Rt-sSV" firstAttribute="leading" secondItem="9eZ-In-TTv" secondAttribute="leading" constant="20" id="jKx-XX-LlS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Vote Details" id="IBw-Ff-7ew">
@@ -1154,9 +1189,9 @@
                                     <constraint firstAttribute="height" constant="30" id="pvh-jN-Ycp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Custom Location"/>
+                                <state key="normal" title="Settings"/>
                                 <connections>
-                                    <action selector="onChangeLocation:" destination="MVG-Gv-hyA" eventType="touchUpInside" id="1ZP-xK-ROf"/>
+                                    <segue destination="PSQ-yL-RQ0" kind="push" id="DZ6-Fa-xJN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1242,7 +1277,7 @@
         <scene sceneID="xbX-47-Kkz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ymu-OD-zGg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="National" id="w66-4i-VSw"/>
+                    <tabBarItem key="tabBarItem" title="National" image="Country" id="w66-4i-VSw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rsW-6e-yac">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1267,9 +1302,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="eSS-1s-Fct" kind="relationship" relationship="viewControllers" id="uvJ-pS-Gap"/>
                         <segue destination="Ymu-OD-zGg" kind="relationship" relationship="viewControllers" id="xd2-GG-1qI"/>
                         <segue destination="qLm-VQ-D9p" kind="relationship" relationship="viewControllers" id="Skn-Gc-SKS"/>
-                        <segue destination="eSS-1s-Fct" kind="relationship" relationship="viewControllers" id="uvJ-pS-Gap"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z89-JK-ecV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1280,7 +1315,7 @@
         <scene sceneID="mp2-Xa-fVF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qLm-VQ-D9p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="State" id="YKY-eu-xvS"/>
+                    <tabBarItem key="tabBarItem" title="State" image="New Jersey" id="YKY-eu-xvS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LSF-O7-K8l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1299,7 +1334,7 @@
         <scene sceneID="pJX-6A-Uzt">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eSS-1s-Fct" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="5RS-2m-J0X"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="5RS-2m-J0X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wy6-gj-3Hw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1315,6 +1350,11 @@
             <point key="canvasLocation" x="672" y="-402"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Country" width="30" height="30"/>
+        <image name="New Jersey" width="30" height="30"/>
+        <image name="Profile" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Z4p-mG-mCa"/>
         <segue reference="Cdu-1I-lUi"/>

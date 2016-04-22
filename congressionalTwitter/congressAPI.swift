@@ -109,7 +109,8 @@ class congressAPI: BDBOAuth1SessionManager {
         let urlString = "/bills"
         var parameter = ["sponsor.bioguide_id": congressperson.bioGuideId,
             "apikey": apiKey,
-            "history.active": "true"]
+            "history.active": "true",
+            "fields": "bill_id,official_title,short_title,popular_title,summary,summary_short,urls"]
         if let search = searchText{
             parameter["query"] = search
         }
