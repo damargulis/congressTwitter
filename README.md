@@ -14,8 +14,13 @@ Features:
 - View state legistlature representatives
 
 All images provided by Noun Project <https://thenounproject.com/>
+
 Data from:
+
   https://sunlightlabs.github.io/congress/
+  
   https://sunlightlabs.github.io/openstates-api/
+  
   https://developers.google.com/civic-information/
+  
   https://www.opensecrets.org/resources/create/apis.php
