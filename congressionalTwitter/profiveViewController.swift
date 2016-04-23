@@ -9,7 +9,12 @@
 import UIKit
 import CoreLocation
 
-class profiveViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+protocol ModalViewControllerDelegate
+{
+    func sendValue(var loc : CLLocationCoordinate2D?)
+}
+
+class profiveViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, ModalViewControllerDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -68,19 +73,6 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func onCurrentLocation(sender: UIButton) {
-        
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-            
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            location = locationManager.location?.coordinate
-            
-        }
-    }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         location = manager.location?.coordinate
@@ -127,6 +119,32 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
     
     // MARK: - Navigation
 
+    func sendValue(loc: CLLocationCoordinate2D?) {
+        self.location = loc
+        
+        openStatesAPI.sharedInstance.getLegislatorsByLocation(location!, success: { (people: [congressPerson]) -> () in
+            
+            self.state = people
+            self.stateTableView.reloadData()
+            
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
+            self.national = people
+            self.nationalNameLabel1.text = "\(people[0].firstName!) \(people[0].lastName!)"
+            self.nationalTitleLabel1.text = "\(people[0].stateName!) \(people[0].title!)"
+            self.nationalNameLabel2.text = "\(people[1].firstName!) \(people[1].lastName!)"
+            self.nationalTitleLabel2.text = "\(people[1].stateName!) \(people[1].title!)"
+            self.nationalNameLabel3.text = "\(people[2].firstName!) \(people[2].lastName!)"
+            self.nationalTitleLabel3.text = "\(people[2].stateName!) \(people[2].title!)"
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        
+        
+    }
+    
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -149,7 +167,9 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
                     }
                 }
             }
-        } else{
+        } else if let dvc = segue.destinationViewController as? updateLocationViewController{
+            
+            dvc.delegate = self
             
         }
     }

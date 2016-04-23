@@ -38,6 +38,7 @@
 		39DAED0D1CC44ACE00968988 /* state.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0C1CC44ACE00968988 /* state.swift */; };
 		39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */; };
 		39E3A7F21CC9D7550073B67C /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3A7F11CC9D7550073B67C /* settingsViewController.swift */; };
+		39F889DD1CCBE9CE00B07154 /* updateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */; };
 		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		39DAED0C1CC44ACE00968988 /* state.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = state.swift; sourceTree = "<group>"; };
 		39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateDetailViewController.swift; sourceTree = "<group>"; };
 		39E3A7F11CC9D7550073B67C /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
+		39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateLocationViewController.swift; sourceTree = "<group>"; };
 		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 			children = (
 				3968351D1CC6F4F900B1864B /* profiveViewController.swift */,
 				39E3A7F11CC9D7550073B67C /* settingsViewController.swift */,
+				39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				399AEDB31C979ACC00AE488F /* detailTableViewCell.swift in Sources */,
 				399AEDBF1C9A34CB00AE488F /* composeViewController.swift in Sources */,
 				399AEDB51C979BC400AE488F /* vote.swift in Sources */,
+				39F889DD1CCBE9CE00B07154 /* updateLocationViewController.swift in Sources */,
 				39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */,
 				39BE05551CC860BF002E184E /* profileStateTableViewCell.swift in Sources */,
 				399AEDB71C97A9EC00AE488F /* voteDetailViewController.swift in Sources */,

@@ -49,9 +49,14 @@ class googleCivicDataAPI: BDBOAuth1SessionManager {
     
     func getRepsFromAddress(address: String!, failure: (NSError) ->()){
         
-        let parameters = ["key": googleApiKey,
-                        "address": address]
-        GET("representatives", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+        
+//        let parameters = ["key": googleApiKey,
+//                        "address": address,
+//                        "roles": "legislatorUpperBody"]
+        
+        let newAddress = address.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        
+        GET("representatives?address=\(newAddress)&roles=legislatorUpperBody&roles=legislatorLowerBody&key=\(googleApiKey)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             print(response)
             
