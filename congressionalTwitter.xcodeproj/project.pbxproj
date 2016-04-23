@@ -39,6 +39,7 @@
 		39DAED0F1CC452AA00968988 /* stateDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */; };
 		39E3A7F21CC9D7550073B67C /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3A7F11CC9D7550073B67C /* settingsViewController.swift */; };
 		39F889DD1CCBE9CE00B07154 /* updateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */; };
+		39F889E11CCC19E400B07154 /* tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F889E01CCC19E400B07154 /* tweet.swift */; };
 		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		39DAED0E1CC452AA00968988 /* stateDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = stateDetailViewController.swift; sourceTree = "<group>"; };
 		39E3A7F11CC9D7550073B67C /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateLocationViewController.swift; sourceTree = "<group>"; };
+		39F889E01CCC19E400B07154 /* tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tweet.swift; sourceTree = "<group>"; };
 		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +169,7 @@
 				393B77A01CC4221B00E93AB7 /* bill.swift */,
 				39DAED0C1CC44ACE00968988 /* state.swift */,
 				3983A7321CC97811003C1E05 /* organization.swift */,
+				39F889E01CCC19E400B07154 /* tweet.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				399AEDA71C927EE500AE488F /* congressTableViewCell.swift in Sources */,
+				39F889E11CCC19E400B07154 /* tweet.swift in Sources */,
 				3943C36C1CC5A2D5002F28F4 /* contributorTableViewCell.swift in Sources */,
 				399AEDAC1C9282A400AE488F /* congressAPI.swift in Sources */,
 				399AEDB31C979ACC00AE488F /* detailTableViewCell.swift in Sources */,

@@ -291,6 +291,7 @@
                                 <segments>
                                     <segment title="Past Votes"/>
                                     <segment title="Sponsored Bills"/>
+                                    <segment title="Tweets"/>
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chamber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1r-ze-tb2">
@@ -1318,7 +1319,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="jHs-dS-6V5"/>
                                     <constraint firstAttribute="height" constant="30" id="pvh-jN-Ycp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="PSQ-yL-RQ0" kind="push" id="DZ6-Fa-xJN"/>

@@ -13,6 +13,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     var congressman: congressPerson!
     var pastVotes: [vote]?
     var sponsoredBills: [bill]?
+    var tweets: [tweet]?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -63,6 +64,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             //populate vote and bills cells
         getPastVotes()
         getSponsoredBills()
+        getTweets()
 
         
         
@@ -102,6 +104,12 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         }else if(voteControl.selectedSegmentIndex == 1){
             if let bills = sponsoredBills{
                 return bills.count
+            } else{
+                return 0
+            }
+        } else if(voteControl.selectedSegmentIndex == 2){
+            if let tweets = tweets{
+                return tweets.count
             } else{
                 return 0
             }
@@ -146,6 +154,24 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    func getTweets(){
+        if(congressman.type == 0){
+            twitterAPI.sharedInstance.getTweets(congressman.twitterUsername, success: { (tweets: [tweet]) -> () in
+                self.tweets = tweets
+                self.tableView.reloadData()
+                
+                
+                }, failure: { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            })
+            
+        }else if(congressman.type == 1){
+            //twitter accounts not currently available for state legislators
+        }
+        
+        
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("detailTableCell") as! detailTableViewCell
@@ -165,6 +191,10 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             }else if let title = bill.title{
                 cell.questionLabel.text = title
             }
+            
+        }else if(voteControl.selectedSegmentIndex == 2){
+            let tweet = tweets![indexPath.row]
+            cell.questionLabel.text = tweet.text
             
         }
         cell.layoutIfNeeded()
@@ -218,6 +248,8 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                     })
                 }
                 
+            } else if(voteControl.selectedSegmentIndex == 2){
+                //some kind of search for tweets?
             }
         }
     }

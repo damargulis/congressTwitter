@@ -37,12 +37,6 @@ class bill: NSObject {
         
         
         title = dict["title"] as? String
-        print(dict)
-        print("official title: \(official_title)")
-        print("popular_title: \(popular_title)")
-        print("short_title: \(short_title)")
-        print("summary: \(summary)")
-        print("summary_short: \(summary_short)")
     }
     
     class func billsDictToArray(array: [NSDictionary]) -> [bill] {

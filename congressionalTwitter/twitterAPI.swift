@@ -94,6 +94,20 @@ class twitterAPI: BDBOAuth1SessionManager {
         }
     }
     
+    func getTweets(username: String!, success: ([tweet]) -> (), failure: (NSError) -> ()){
+        
+        
+        let parameters = ["screen_name": username, "include_rts": "false", "exclude_replies": "true"]
+        
+        GET("https://api.twitter.com/1.1/statuses/user_timeline.json", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let tweets = tweet.tweetsWithArray(response as! [NSDictionary])
+            success(tweets)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+        
+    }
     
     
 
