@@ -21,6 +21,7 @@ class voteDetailViewController: UIViewController {
     var congressman: congressPerson!
     var thisvote: vote?
     var thisbill: bill?
+    var thistweet: tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,21 @@ class voteDetailViewController: UIViewController {
                 questionLabel.text = "No Summary Available"
             }
             
+        }else if let thistweet = thistweet{
+            
+            questionLabel.text = thistweet.text
+            voteLabel.text = "Favorites: \(thistweet.favoritesCount)"
+            resultLabel.text = "Retweets: \(thistweet.retweetCount)"
+            if(thistweet.favorited){
+                approveButton.setTitle("Unfavorite", forState: .Normal)
+            }else{
+                approveButton.setTitle("Favorite", forState: .Normal)
+            }
+            if(thistweet.retweeted){
+                disapproveButton.setTitle("Unretweet", forState: .Normal)
+            }else{
+                disapproveButton.setTitle("Retweet", forState: .Normal)
+            }
         }
         
         
@@ -107,6 +123,58 @@ class voteDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func onTapApprove(sender: AnyObject) {
+        if let _ = thisvote{
+            performSegueWithIdentifier("toComposeView", sender: sender)
+        }else if let _ = thisbill{
+            performSegueWithIdentifier("toComposeView", sender: sender)
+        }else if let tweet = thistweet{
+
+            if(tweet.favorited){
+                twitterAPI.sharedInstance.unfav(tweet, success: { () -> () in
+                    self.approveButton.setTitle("Favorite", forState: .Normal)
+                    self.voteLabel.text = "Favorites: \(tweet.favoritesCount)"
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }else{
+                twitterAPI.sharedInstance.fav(tweet, success: { () -> () in
+                    self.approveButton.setTitle("Unfavorite", forState: .Normal)
+                    self.voteLabel.text = "Favorites: \(tweet.favoritesCount)"
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }
+            
+        }
+        
+    }
+    
+    @IBAction func onTapDisapprove(sender: AnyObject) {
+        if let _ = thisvote{
+            performSegueWithIdentifier("toComposeView", sender: sender)
+        }else if let _ = thisbill{
+            performSegueWithIdentifier("toComposeView", sender: sender)
+        }else if let tweet = thistweet{
+            if(tweet.retweeted){
+                twitterAPI.sharedInstance.unRetweet(tweet, success: { () -> () in
+                    self.disapproveButton.setTitle("Retweet", forState: .Normal)
+                    self.resultLabel.text = "Retweets: \(tweet.retweetCount)"
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }else{
+                twitterAPI.sharedInstance.retweet(tweet, success: { () -> () in
+                    self.disapproveButton.setTitle("Unretweet", forState: .Normal)
+                    self.resultLabel.text = "Retweets: \(tweet.retweetCount)"
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+            }
+        }
+        
+    }
+    
     
     
     // MARK: - Navigation
@@ -126,13 +194,10 @@ class voteDetailViewController: UIViewController {
             composeView.approve = false
         }
         if let thisvote = thisvote{
-            composeView.type = 0
             composeView.thisVote = thisvote
             composeView.theyVoted = thisvote.voter_ids[congressman.bioGuideId]
-            
 
         }else if let thisbill = thisbill{
-            composeView.type = 1
             composeView.thisBill = thisbill
             
         }

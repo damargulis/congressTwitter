@@ -39,9 +39,6 @@ class tweet: NSObject {
             
         id = (dictionary["id"] as? Int)!
         idstr = dictionary["id_str"] as? String
-        
-        print(text)
-            
             
     }
         

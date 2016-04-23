@@ -9,7 +9,7 @@
 import UIKit
 
 class composeViewController: UIViewController, UITextViewDelegate {
-
+    
     @IBOutlet weak var tweetTextView: UITextView!
     
     @IBOutlet weak var characterCountLabel: UILabel!
@@ -20,25 +20,32 @@ class composeViewController: UIViewController, UITextViewDelegate {
     
     var approve: Bool!
     var toCongressman: congressPerson!
-    var thisVote: vote!
-    var thisBill: bill!
+    var thisVote: vote?
+    var thisBill: bill?
     var theyVoted: String!
     
-    var type: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tweetTextView.delegate = self
         
-        if(type == 0){
-            if approve == true {
-                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I approve of your vote of \(theyVoted) on \(thisVote!.rollID)!"
-            } else {
-                tweetTextView.text = ".@\(toCongressman.twitterUsername!) I disapprove of your vote of \(theyVoted) on \(thisVote!.rollID)!"
+        tweetTextView.delegate = self
+        if let username = toCongressman.twitterUsername{
+            if let thisVote = thisVote{
+                if approve == true {
+                    tweetTextView.text = ".@\(username) I approve of your vote of \(theyVoted) on \(thisVote.rollID)!"
+                } else {
+                    tweetTextView.text = ".@\(username) I disapprove of your vote of \(theyVoted) on \(thisVote.rollID)!"
+                }
+            }else if let thisBill = thisBill{
+                if approve == true{
+                    tweetTextView.text = ".@\(username) I approve of your sponsored bill \(thisBill.billId!)"
+                } else{
+                    tweetTextView.text = ".@\(username) I disapprove of your sponsored bill \(thisBill.billId!)"
+                }
+                
             }
-        }else if(type == 1){
-            tweetTextView.text = "Sorry, this congressmen does not currently have a twitter account"
+        }else{
+            tweetTextView.text = "Sorry, this legislators twitter account is not currently available"
         }
         
         let charLeft = 140 - tweetTextView.text.characters.count
@@ -47,13 +54,13 @@ class composeViewController: UIViewController, UITextViewDelegate {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     //Control character count
     func textViewDidChange(textView: UITextView) {
         let numCharacters = textView.text.characters.count
@@ -73,17 +80,17 @@ class composeViewController: UIViewController, UITextViewDelegate {
     @IBAction func onCancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
-
+    
     
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

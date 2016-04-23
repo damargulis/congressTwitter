@@ -287,6 +287,11 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                 let abill = sponsoredBills![indexPath!.row]
                 detailViewController.thisbill = abill
                 
+            }else if(voteControl.selectedSegmentIndex == 2){
+                
+                let atweet = tweets![indexPath!.row]
+                detailViewController.thistweet = atweet
+                
             }
         } else if let _ = sender as? UIButton{
             let contributorViewController = segue.destinationViewController as! contributorsViewController

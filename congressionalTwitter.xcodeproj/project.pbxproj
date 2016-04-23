@@ -21,7 +21,6 @@
 		398A486E1CC0A78300427138 /* contributorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A486D1CC0A78300427138 /* contributorsViewController.swift */; };
 		399AED931C927E3500AE488F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED921C927E3500AE488F /* AppDelegate.swift */; };
 		399AED951C927E3500AE488F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AED941C927E3500AE488F /* ViewController.swift */; };
-		399AED981C927E3500AE488F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399AED961C927E3500AE488F /* Main.storyboard */; };
 		399AED9A1C927E3500AE488F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 399AED991C927E3500AE488F /* Assets.xcassets */; };
 		399AED9D1C927E3500AE488F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399AED9B1C927E3500AE488F /* LaunchScreen.storyboard */; };
 		399AEDA71C927EE500AE488F /* congressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399AEDA61C927EE500AE488F /* congressTableViewCell.swift */; };
@@ -40,6 +39,7 @@
 		39E3A7F21CC9D7550073B67C /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3A7F11CC9D7550073B67C /* settingsViewController.swift */; };
 		39F889DD1CCBE9CE00B07154 /* updateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */; };
 		39F889E11CCC19E400B07154 /* tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F889E01CCC19E400B07154 /* tweet.swift */; };
+		39F889E31CCC271B00B07154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39F889E21CCC271B00B07154 /* Main.storyboard */; };
 		9817767237B96AF4DB09B21D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0433A8EABE488768BCA0805B /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,6 @@
 		399AED8F1C927E3500AE488F /* congressionalTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = congressionalTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399AED921C927E3500AE488F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399AED941C927E3500AE488F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		399AED971C927E3500AE488F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		399AED991C927E3500AE488F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		399AED9C1C927E3500AE488F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		399AED9E1C927E3500AE488F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		39E3A7F11CC9D7550073B67C /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		39F889DC1CCBE9CE00B07154 /* updateLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = updateLocationViewController.swift; sourceTree = "<group>"; };
 		39F889E01CCC19E400B07154 /* tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tweet.swift; sourceTree = "<group>"; };
+		39F889E21CCC271B00B07154 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../.Trash/Main.storyboard; sourceTree = "<group>"; };
 		514966BB35D85546A91AA222 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +140,7 @@
 				399AEDAD1C93247400AE488F /* Classes */,
 				399AEDAA1C92827300AE488F /* API */,
 				399AED921C927E3500AE488F /* AppDelegate.swift */,
-				399AED961C927E3500AE488F /* Main.storyboard */,
+				39F889E21CCC271B00B07154 /* Main.storyboard */,
 				399AED991C927E3500AE488F /* Assets.xcassets */,
 				399AED9B1C927E3500AE488F /* LaunchScreen.storyboard */,
 				399AED9E1C927E3500AE488F /* Info.plist */,
@@ -298,9 +298,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F889E31CCC271B00B07154 /* Main.storyboard in Resources */,
 				399AED9D1C927E3500AE488F /* LaunchScreen.storyboard in Resources */,
 				399AED9A1C927E3500AE488F /* Assets.xcassets in Resources */,
-				399AED981C927E3500AE488F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,14 +395,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		399AED961C927E3500AE488F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				399AED971C927E3500AE488F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		399AED9B1C927E3500AE488F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
