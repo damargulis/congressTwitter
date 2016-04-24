@@ -54,12 +54,9 @@ class updateLocationViewController: UIViewController, CLLocationManagerDelegate 
 //            print(error.localizedDescription)
 //        }
         
-
-        print(address)
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
             if let placemark = placemarks?[0]{
-                print(placemark.location)
                 self.location = placemark.location?.coordinate
                 
                 self.delegate.sendValue(self.location)

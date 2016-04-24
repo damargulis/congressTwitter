@@ -11,12 +11,9 @@ import CoreLocation
 
 class stateDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var chamberControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    
-    
     
     var curstate: state!
     var people: [congressPerson]?
@@ -27,7 +24,8 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.dataSource = self
         tableView.delegate = self
         
-        nameLabel.text = curstate.name
+        self.title = curstate.name
+        
         chamberControl.removeAllSegments()
         var i = 0
         for chamber in curstate.chambers{
@@ -46,6 +44,8 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+        
+        flagImageView.image = UIImage(named: curstate.name)
 
         chamberControl.selectedSegmentIndex = i
         chamberControl.addTarget(self, action: "chamberDidChange:", forControlEvents: .ValueChanged)
@@ -71,7 +71,23 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         let rep = people![indexPath.row]
         cell.nameLabel.text = rep.name
         cell.partyLabel.text = rep.partyName
-        cell.districtLabel.text = "District \(rep.district!)"
+        if let district = rep.district{
+            cell.districtLabel.text = "District \(district)"
+        }
+        if(rep.partyCode == "D"){
+            cell.backgroundColor = UIColor.blueColor()
+            cell.nameLabel.textColor = UIColor.whiteColor()
+            cell.partyLabel.textColor = UIColor.whiteColor()
+            cell.districtLabel.textColor = UIColor.whiteColor()
+        }else if(rep.partyCode == "R"){
+            cell.backgroundColor = UIColor.redColor()
+            cell.nameLabel.textColor = UIColor.blackColor()
+            cell.partyLabel.textColor = UIColor.blackColor()
+            cell.districtLabel.textColor = UIColor.blackColor()
+        }else{
+            cell.backgroundColor = UIColor.grayColor()
+        }
+        
         return cell
         
     }
@@ -99,13 +115,6 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-//        if let cell = sender as? stateDetailTableViewCell{
-//            let ip = tableView.indexPathForCell(cell)
-//            let dvc = segue.destinationViewController as? stateRepDetailViewController
-//            dvc?.rep = people![ip!.row]
-//            dvc?.curState = curstate
-//        }
         if let cell = sender as? stateDetailTableViewCell{
             let ip = tableView.indexPathForCell(cell)
             let dvc = segue.destinationViewController as! congressmanDetailView

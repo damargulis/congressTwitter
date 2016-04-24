@@ -31,10 +31,19 @@ class organizationViewController: UIViewController {
             
             self.org = org
             self.nameLabel.text = org.name
-            self.individualLabel.text = "Individual Contributions: $\(org.individuals!)"
-            self.pacLabel.text = "PAC Contributions: $\(org.pacs!)"
-            self.demLabel.text = "Given to Democrats: $\(org.dems!)"
-            self.repLabel.text = "Given to Republicans: $\(org.repubs!)"
+            let nf = NSNumberFormatter()
+            nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+            
+            let indiv = nf.stringFromNumber(nf.numberFromString(org.individuals!)!)
+            
+            self.individualLabel.text = "Individual Contributions: $\(indiv!)"
+            let pacs = nf.stringFromNumber(nf.numberFromString(org.pacs!)!)
+            let dems = nf.stringFromNumber(nf.numberFromString(org.dems!)!)
+            let repub = nf.stringFromNumber(nf.numberFromString(org.repubs!)!)
+
+            self.pacLabel.text = "PAC Contributions: $\(pacs!)"
+            self.demLabel.text = "Given to Democrats: $\(dems!)"
+            self.repLabel.text = "Given to Republicans: $\(repub!)"
             
             })
         

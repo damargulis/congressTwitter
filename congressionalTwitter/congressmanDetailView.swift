@@ -32,9 +32,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.dataSource = self
         tableView.delegate = self
-        
         searchBar.delegate = self
-        
         voteControl.addTarget(self, action: "voteDidChange:", forControlEvents: .ValueChanged)
         
         
@@ -65,13 +63,29 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         getPastVotes()
         getSponsoredBills()
         getTweets()
-
-        
-        
         
         if let url = congressman.photoUrl{
             partyImageView.setImageWithURL(NSURL(string: url)!)
-        } else{
+        } else if let username = congressman.twitterUsername{
+            
+            twitterAPI.sharedInstance.getUser(username, success: { (account: twitterUser) -> () in
+                if let url = account.profileImageUrl{
+                    self.partyImageView.setImageWithURL(url)
+                }else{
+                    if (self.congressman.partyCode == "D"){
+                        self.partyImageView.image = UIImage(named: "Donkey")
+                    } else if (self.congressman.partyCode == "R"){
+                        self.partyImageView.image = UIImage(named: "Elephant")
+                    } else {
+                        self.partyImageView.image = UIImage(named: "Congress")
+                    }
+                }
+                
+                }, failure: { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            })
+            
+        }else{
             //get party image
             if (congressman.partyCode == "D"){
                 partyImageView.image = UIImage(named: "Donkey")

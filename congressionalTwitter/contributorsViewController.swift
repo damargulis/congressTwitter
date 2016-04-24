@@ -45,8 +45,13 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
         let org1 = orgs![indexPath.row]
         let org = org1["@attributes"] as! NSDictionary
         cell.nameLabel.text = org["org_name"] as? String
-        cell.individualLabel.text = "Individuals: $\(org["indivs"] as! String)"
-        cell.pacLabel.text = "PAC's: $\(org["pacs"]as! String)"
+        let nf = NSNumberFormatter()
+        nf.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        let indiv = nf.stringFromNumber(nf.numberFromString((org["indivs"] as? String)!)!)
+        let pacs = nf.stringFromNumber(nf.numberFromString((org["pacs"] as? String)!)!)
+        
+        cell.individualLabel.text = "Individuals: $\(indiv!)"
+        cell.pacLabel.text = "PAC's: $\(pacs!)"
         return cell
     }
     
