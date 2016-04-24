@@ -100,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				399AEDAF1C93367B00AE488F /* congressmanDetailView.swift */,
+				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
 			);
 			name = "Mutable Use";
 			sourceTree = "<group>";
@@ -203,7 +204,6 @@
 			children = (
 				398A486D1CC0A78300427138 /* contributorsViewController.swift */,
 				399AEDBE1C9A34CB00AE488F /* composeViewController.swift */,
-				399AEDB61C97A9EC00AE488F /* voteDetailViewController.swift */,
 				399AED941C927E3500AE488F /* ViewController.swift */,
 				3983A7301CC97687003C1E05 /* organizationViewController.swift */,
 			);

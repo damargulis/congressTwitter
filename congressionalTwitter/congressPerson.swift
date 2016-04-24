@@ -41,12 +41,15 @@ class congressPerson: NSObject {
     var photoUrl: String?
     var legID: String?
     
+    var twitterAccount: twitterUser?
+    
 
 
 
     
     
     init(entry: NSDictionary, type: Int!) {
+        super.init()
         self.type = type
         
 
@@ -97,7 +100,17 @@ class congressPerson: NSObject {
             
             website = entry["website"] as? String
             twitterUsername = entry["twitter_id"] as? String
-            
+            if let twitterUsername = twitterUsername{
+                
+                twitterAPI.sharedInstance.getUser(twitterUsername, success: { (account: twitterUser) -> () in
+                    self.twitterAccount = account
+                    print("successfully got twitterAccount")
+                    }, failure: { (error: NSError) -> () in
+                        
+                        print(error.localizedDescription)
+                })
+                
+            }
             
             if let termStart = termStart{
                 if let termEnd = termEnd{

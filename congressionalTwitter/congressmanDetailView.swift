@@ -25,6 +25,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var partyImageView: UIImageView!
     
     @IBOutlet weak var voteControl: UISegmentedControl!
+    @IBOutlet weak var followButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -96,6 +97,15 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        if let following = congressman.twitterAccount?.following{
+            
+            if(following){
+                followButton.setTitle("Unfollow", forState: .Normal)
+            }else{
+                followButton.setTitle("Follow", forState: .Normal)
+            }
+            
+        }
         
         //tabeview autolayout control
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -277,6 +287,39 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
+    @IBAction func onTapFollow(sender: AnyObject) {
+        
+        print("taping follow")
+        
+        if let following = congressman.twitterAccount?.following{
+            print("following exists")
+            if(following){
+                
+                twitterAPI.sharedInstance.unfollow(congressman.twitterUsername, success: { () -> () in
+                    print("unfollowed")
+                    self.congressman.twitterAccount?.following = false
+                    self.followButton.setTitle("Follow", forState: .Normal)
+                    
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+                
+            }else{
+                
+                twitterAPI.sharedInstance.follow(congressman.twitterUsername, success: { () -> () in
+                    print("followed")
+                    self.congressman.twitterAccount?.following = true
+                    self.followButton.setTitle("Unfollow", forState: .Normal)
+                    }, failure: { (error: NSError) -> () in
+                        print(error.localizedDescription)
+                })
+                
+            }
+        }
+        
+    }
+    
     
     // MARK: - Navigation
     

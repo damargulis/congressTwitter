@@ -17,6 +17,9 @@ class voteDetailViewController: UIViewController {
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var approveButton: UIButton!
     @IBOutlet weak var disapproveButton: UIButton!
+    @IBOutlet weak var questionButton: UIButton!
+    
+    
     
     var congressman: congressPerson!
     var thisvote: vote?
@@ -39,6 +42,9 @@ class voteDetailViewController: UIViewController {
         
         approveButton.tag = 0
         disapproveButton.tag = 1
+        questionButton.tag = 2
+        
+        questionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         
         nameLabel.text = congressman.name
         
@@ -84,6 +90,7 @@ class voteDetailViewController: UIViewController {
             }else{
                 disapproveButton.setTitle("Retweet", forState: .Normal)
             }
+            questionButton.setTitle("Reply", forState: .Normal)
         }
         
         
@@ -175,6 +182,13 @@ class voteDetailViewController: UIViewController {
         
     }
     
+    @IBAction func onTapQuestion(sender: AnyObject) {
+        
+        performSegueWithIdentifier("toComposeView", sender: sender)
+    }
+    
+    
+    
     
     
     // MARK: - Navigation
@@ -188,10 +202,16 @@ class voteDetailViewController: UIViewController {
         //Segue to tweet compose page
         let composeView = segue.destinationViewController as! composeViewController
         composeView.toCongressman = self.congressman
+        composeView.question = false
         if sender!.tag == 0 {
             composeView.approve = true
-        } else {
+        }else if sender!.tag == 1{
             composeView.approve = false
+        }else if sender!.tag == 2{
+            composeView.question = true
+            if let reply = thistweet{
+                composeView.inReplyTo = reply
+            }
         }
         if let thisvote = thisvote{
             composeView.thisVote = thisvote

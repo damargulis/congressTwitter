@@ -165,5 +165,44 @@ class twitterAPI: BDBOAuth1SessionManager {
         
     }
     
+    func follow(username: String!, success: () -> (), failure: (NSError) -> ()){
+        
+        POST("https://api.twitter.com/1.1/friendships/create.json?screen_name=\(username)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            success()
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+        
+    }
+    
+    func unfollow(username: String!, success: () -> (), failure: (NSError) -> ()){
+        
+        POST("https://api.twitter.com/1.1/friendships/destroy.json?screen_name=\(username)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            success()
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+    }
+    
+    func postReply(text: String, sendTo: tweet, success: () -> (), failure: (NSError) -> ()){
+        
+        let parameters = [
+            "status": text,
+            "in_reply_to_status_id": sendTo.id
+        ]
+        
+        POST("https://api.twitter.com/1.1/statuses/update.json", parameters: parameters, progress: { (NSProgress) -> Void in
+            print("YUP")
+            }, success: { (data: NSURLSessionDataTask, objects: AnyObject?) -> Void in
+                success()
+            }) { (data: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+    }
+
 
 }

@@ -33,7 +33,6 @@ class contributorsViewController: UIViewController, UITableViewDelegate, UITable
             
             self.orgs = response["contributors"]!["contributor"] as? [NSDictionary]
             self.tableView.reloadData()
-            print(self.orgs)
         })
         } else if(congressperson.type == 1){
             partyLabel.text = "Not currently available"

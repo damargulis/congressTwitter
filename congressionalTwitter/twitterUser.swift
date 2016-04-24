@@ -22,6 +22,7 @@ class twitterUser: NSObject {
     var followingCount: Int?
     var tweetCount: Int?
     var location: String?
+    var following: Bool?
     
     static let userDidLogoutNotification = "UserDidLogout"
     
@@ -45,6 +46,17 @@ class twitterUser: NSObject {
         tweetCount = dictionary["statuses_count"] as? Int
         
         location = dictionary["location"] as? String
+        print("looking for f")
+        if let f = dictionary["following"] as? Bool{
+            print(f)
+            if(f){
+                following = true
+                print("setting true")
+            }else{
+                print("setting false")
+                following = false
+            }
+        }
         
     }
     

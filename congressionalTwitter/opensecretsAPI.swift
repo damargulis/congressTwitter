@@ -53,9 +53,7 @@ class opensecretsAPI: BDBOAuth1SessionManager {
         
         let newName = name.stringByReplacingOccurrencesOfString(" ", withString: "_")
         let urlString = "https://www.opensecrets.org/api/?method=getOrgs&apikey=\(opensecretApiKey)&output=json&org=\(newName)"
-        print(urlString)
         let url = NSURL(string: urlString)
-        
         
         let request = NSURLRequest(
             URL: url!,
@@ -72,13 +70,17 @@ class opensecretsAPI: BDBOAuth1SessionManager {
         let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
-                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                    print(data)
+                    if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            let response = responseDictionary["response"] as! NSDictionary
-                            let organization = response["organization"] as! NSDictionary
-                            let attributes = organization["@attributes"] as! NSDictionary
-                            id = attributes["orgid"] as? String
-                            self.getOrgSummaryFromID(id, success: success)
+                            let response = responseDictionary!["response"] as! NSDictionary
+                            print(response)
+                            if let organization = response["organization"] as? NSDictionary{
+                                let attributes = organization["@attributes"] as! NSDictionary
+                                id = attributes["orgid"] as? String
+                                self.getOrgSummaryFromID(id, success: success)
+                            }
+
                     }
                 }
                 

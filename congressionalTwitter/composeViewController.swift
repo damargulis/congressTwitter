@@ -23,26 +23,39 @@ class composeViewController: UIViewController, UITextViewDelegate {
     var thisVote: vote?
     var thisBill: bill?
     var theyVoted: String!
+    var question: Bool!
     
+    var inReplyTo: tweet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tweetTextView.delegate = self
+        
         if let username = toCongressman.twitterUsername{
-            if let thisVote = thisVote{
-                if approve == true {
-                    tweetTextView.text = ".@\(username) I approve of your vote of \(theyVoted) on \(thisVote.rollID)!"
-                } else {
-                    tweetTextView.text = ".@\(username) I disapprove of your vote of \(theyVoted) on \(thisVote.rollID)!"
+            if(question == false){
+                if let thisVote = thisVote{
+                    if approve == true {
+                        tweetTextView.text = ".@\(username) I approve of your vote of \(theyVoted) on \(thisVote.rollID)! "
+                    } else {
+                        tweetTextView.text = ".@\(username) I disapprove of your vote of \(theyVoted) on \(thisVote.rollID)! "
+                    }
+                }else if let thisBill = thisBill{
+                    if approve == true{
+                        tweetTextView.text = ".@\(username) I approve of your sponsored bill \(thisBill.billId!). "
+                    } else{
+                        tweetTextView.text = ".@\(username) I disapprove of your sponsored bill \(thisBill.billId!). "
+                    }
+                    
                 }
-            }else if let thisBill = thisBill{
-                if approve == true{
-                    tweetTextView.text = ".@\(username) I approve of your sponsored bill \(thisBill.billId!)"
-                } else{
-                    tweetTextView.text = ".@\(username) I disapprove of your sponsored bill \(thisBill.billId!)"
+            }else{
+                if let thisVote = thisVote{
+                    tweetTextView.text = ".@\(username) I have a question about your vote on \(thisVote.rollID): "
+                } else if let thisBill = thisBill{
+                    tweetTextView.text = ".@\(username) I have a question about your bill \(thisBill.billId): "
+                }else{
+                    tweetTextView.text = ".@\(username) "
                 }
-                
             }
         }else{
             tweetTextView.text = "Sorry, this legislators twitter account is not currently available"
@@ -72,8 +85,16 @@ class composeViewController: UIViewController, UITextViewDelegate {
     
     //Send tweet
     @IBAction func onSend(sender: AnyObject) {
-        twitterAPI.sharedInstance.postStatus(tweetTextView.text)
-        self.dismissViewControllerAnimated(false, completion: nil)
+        if let replyTo = inReplyTo{
+            twitterAPI.sharedInstance.postReply(tweetTextView.text, sendTo: replyTo, success: { () -> () in
+                self.dismissViewControllerAnimated(false, completion: nil)
+                }, failure: { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            })
+        }else{
+            twitterAPI.sharedInstance.postStatus(tweetTextView.text)
+            self.dismissViewControllerAnimated(false, completion: nil)
+        }
     }
     
     //Cancel tweet
