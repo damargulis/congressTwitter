@@ -47,13 +47,18 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         stateTableView.delegate = self
         stateTableView.dataSource = self
         
+        if let cur = twitterUser.currentUser{
+            usernameLabel.text = cur.name as? String
+            screennameLabel.text = "@\(cur.screenname!)"
+            bioLabel.text = cur.tagline
+            profileImageView.setImageWithURL((cur.profileImageUrl)!)
+        }else{
+            usernameLabel.text = "Please Log In"
+        }
+
         
-        usernameLabel.text = twitterUser.currentUser?.name as? String
-        screennameLabel.text = "@\(twitterUser.currentUser!.screenname!)"
-        bioLabel.text = twitterUser.currentUser?.tagline
         
-        
-        profileImageView.setImageWithURL((twitterUser.currentUser?.profileImageUrl)!)
+
 
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){

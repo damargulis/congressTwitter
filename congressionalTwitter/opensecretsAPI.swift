@@ -70,11 +70,11 @@ class opensecretsAPI: BDBOAuth1SessionManager {
         let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
-                    print(data)
+                    
                     if let responseDictionary = try? NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             let response = responseDictionary!["response"] as! NSDictionary
-                            print(response)
+                            
                             if let organization = response["organization"] as? NSDictionary{
                                 let attributes = organization["@attributes"] as! NSDictionary
                                 id = attributes["orgid"] as? String
@@ -137,13 +137,11 @@ class opensecretsAPI: BDBOAuth1SessionManager {
         GET("api/?method=candContrib", parameters: parameters, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             let results = response!["results"] as! [NSDictionary]
-            print("here success")
             success(results)
             
             
             }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
                 
-                print("here fail")
                 failure(error)
         }
         

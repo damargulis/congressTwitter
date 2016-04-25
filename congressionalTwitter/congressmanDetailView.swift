@@ -36,6 +36,50 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         searchBar.delegate = self
         voteControl.addTarget(self, action: "voteDidChange:", forControlEvents: .ValueChanged)
         
+        if let twitterUsername = congressman.twitterUsername{
+            
+            twitterAPI.sharedInstance.getUser(twitterUsername, success: { (account: twitterUser) -> () in
+                self.congressman.twitterAccount = account
+                print("got account")
+                if let url = account.profileImageUrl{
+                    self.partyImageView.setImageWithURL(url)
+                }else{
+                    if (self.congressman.partyCode == "D"){
+                        self.partyImageView.image = UIImage(named: "Donkey")
+                    } else if (self.congressman.partyCode == "R"){
+                        self.partyImageView.image = UIImage(named: "Elephant")
+                    } else {
+                        self.partyImageView.image = UIImage(named: "Congress")
+                    }
+                }
+                if let following = account.following{
+                    if(following){
+                        self.followButton.setTitle("Unfollow", forState: .Normal)
+                    }else{
+                        self.followButton.setTitle("Follow", forState: .Normal)
+                    }
+                }
+                
+                }, failure: { (error: NSError) -> () in
+                    print("didnt get account")
+                    print(error.localizedDescription)
+                    if (self.congressman.partyCode == "D"){
+                        self.partyImageView.image = UIImage(named: "Donkey")
+                    } else if (self.congressman.partyCode == "R"){
+                        self.partyImageView.image = UIImage(named: "Elephant")
+                    } else {
+                        self.partyImageView.image = UIImage(named: "Congress")
+                    }
+
+            })
+            
+        } else{
+            if let url = congressman.photoUrl{
+                self.partyImageView.setImageWithURL(NSURL(string: url)!)
+            }
+            
+        }
+        
         
         //control login button
         if twitterUser.currentUser != nil {
@@ -64,48 +108,6 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         getPastVotes()
         getSponsoredBills()
         getTweets()
-        
-        if let url = congressman.photoUrl{
-            partyImageView.setImageWithURL(NSURL(string: url)!)
-        } else if let username = congressman.twitterUsername{
-            
-            twitterAPI.sharedInstance.getUser(username, success: { (account: twitterUser) -> () in
-                if let url = account.profileImageUrl{
-                    self.partyImageView.setImageWithURL(url)
-                }else{
-                    if (self.congressman.partyCode == "D"){
-                        self.partyImageView.image = UIImage(named: "Donkey")
-                    } else if (self.congressman.partyCode == "R"){
-                        self.partyImageView.image = UIImage(named: "Elephant")
-                    } else {
-                        self.partyImageView.image = UIImage(named: "Congress")
-                    }
-                }
-                
-                }, failure: { (error: NSError) -> () in
-                    print(error.localizedDescription)
-            })
-            
-        }else{
-            //get party image
-            if (congressman.partyCode == "D"){
-                partyImageView.image = UIImage(named: "Donkey")
-            } else if (congressman.partyCode == "R"){
-                partyImageView.image = UIImage(named: "Elephant")
-            } else {
-                partyImageView.image = UIImage(named: "Congress")
-            }
-        }
-        
-        if let following = congressman.twitterAccount?.following{
-            
-            if(following){
-                followButton.setTitle("Unfollow", forState: .Normal)
-            }else{
-                followButton.setTitle("Follow", forState: .Normal)
-            }
-            
-        }
         
         //tabeview autolayout control
         tableView.rowHeight = UITableViewAutomaticDimension

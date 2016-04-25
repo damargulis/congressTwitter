@@ -26,7 +26,7 @@ class organizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(name)
+        
         opensecretsAPI.sharedInstance.getOrganizationSummaryFromName(name, success: { (org: organization) -> () in
             
             self.org = org
