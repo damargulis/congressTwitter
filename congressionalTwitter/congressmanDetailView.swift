@@ -40,7 +40,6 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             
             twitterAPI.sharedInstance.getUser(twitterUsername, success: { (account: twitterUser) -> () in
                 self.congressman.twitterAccount = account
-                print("got account")
                 if let url = account.profileImageUrl{
                     self.partyImageView.setImageWithURL(url)
                 }else{

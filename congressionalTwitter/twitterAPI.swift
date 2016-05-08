@@ -153,7 +153,6 @@ class twitterAPI: BDBOAuth1SessionManager {
     }
     
     func getUser(username: String!, success: (twitterUser) -> (), failure: (NSError) -> ()){
-        
         GET("https://api.twitter.com/1.1/users/show.json?screen_name=\(username)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             let account = twitterUser(dictionary: response as! NSDictionary)
