@@ -25,6 +25,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var partyImageView: UIImageView!
     
     @IBOutlet weak var voteControl: UISegmentedControl!
+
     @IBOutlet weak var followButton: UIButton!
     
     
@@ -290,7 +291,6 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func onTapFollow(sender: AnyObject) {
-        
         print("taping follow")
         
         if let following = congressman.twitterAccount?.following{
@@ -318,8 +318,10 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                 
             }
         }
+
         
     }
+    
     
     
     // MARK: - Navigation

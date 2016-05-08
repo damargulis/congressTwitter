@@ -17,6 +17,7 @@ class voteDetailViewController: UIViewController {
     @IBOutlet weak var loginButton: UIBarButtonItem!
     @IBOutlet weak var approveButton: UIButton!
     @IBOutlet weak var disapproveButton: UIButton!
+
     @IBOutlet weak var questionButton: UIButton!
     
     
