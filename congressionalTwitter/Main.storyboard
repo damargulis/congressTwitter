@@ -525,9 +525,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dfe-lE-UAi">
-                                <rect key="frame" x="20" y="72" width="280" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="108"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="KZ4-BY-LLe"/>
+                                    <constraint firstAttribute="height" constant="108" id="KZ4-BY-LLe"/>
                                 </constraints>
                             </imageView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IpV-Mq-jok">
@@ -584,15 +584,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IpV-Mq-jok" secondAttribute="trailing" constant="20" id="9Qi-EJ-vAp"/>
-                            <constraint firstAttribute="trailing" secondItem="Dfe-lE-UAi" secondAttribute="trailing" constant="20" id="ASZ-Dc-QDo"/>
+                            <constraint firstAttribute="trailing" secondItem="Dfe-lE-UAi" secondAttribute="trailing" id="ASZ-Dc-QDo"/>
                             <constraint firstItem="sNN-Tb-fLg" firstAttribute="top" secondItem="S8Y-Xm-fq0" secondAttribute="bottom" id="DCI-ph-9Bc"/>
                             <constraint firstItem="IpV-Mq-jok" firstAttribute="leading" secondItem="Dfa-sp-kYB" secondAttribute="leading" constant="20" id="HPi-An-rRb"/>
-                            <constraint firstAttribute="trailing" secondItem="Dfe-lE-UAi" secondAttribute="trailing" constant="20" id="JXY-VG-Uiw"/>
+                            <constraint firstAttribute="trailing" secondItem="Dfe-lE-UAi" secondAttribute="trailing" id="JXY-VG-Uiw"/>
                             <constraint firstAttribute="trailing" secondItem="S8Y-Xm-fq0" secondAttribute="trailing" id="KMg-s8-jyq"/>
                             <constraint firstItem="IpV-Mq-jok" firstAttribute="top" secondItem="Dfe-lE-UAi" secondAttribute="bottom" constant="8" id="YnA-k3-PbH"/>
-                            <constraint firstItem="Dfe-lE-UAi" firstAttribute="top" secondItem="goq-7e-LMB" secondAttribute="bottom" constant="8" id="eVg-WA-ajw"/>
+                            <constraint firstItem="Dfe-lE-UAi" firstAttribute="top" secondItem="goq-7e-LMB" secondAttribute="bottom" id="eVg-WA-ajw"/>
                             <constraint firstItem="S8Y-Xm-fq0" firstAttribute="top" secondItem="IpV-Mq-jok" secondAttribute="bottom" constant="12" id="q2x-JY-8bX"/>
-                            <constraint firstItem="Dfe-lE-UAi" firstAttribute="leading" secondItem="Dfa-sp-kYB" secondAttribute="leading" constant="20" id="qkY-LW-nhA"/>
+                            <constraint firstItem="Dfe-lE-UAi" firstAttribute="leading" secondItem="Dfa-sp-kYB" secondAttribute="leading" id="qkY-LW-nhA"/>
                             <constraint firstItem="S8Y-Xm-fq0" firstAttribute="leading" secondItem="Dfa-sp-kYB" secondAttribute="leading" id="wPi-nW-iGe"/>
                         </constraints>
                     </view>
@@ -811,13 +811,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congressman Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sey-NE-2Uu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Congressman Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sey-NE-2Uu">
                                 <rect key="frame" x="20" y="33" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qZ-Cq-pQC">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qZ-Cq-pQC">
                                 <rect key="frame" x="220" y="425" width="80" height="70"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.080225848229999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -840,13 +840,13 @@
                                     <segue destination="9p5-WX-f4s" kind="modal" id="PYZ-Mu-wLr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-kq-v0m">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8A-kq-v0m">
                                 <rect key="frame" x="20" y="352" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XQ-Ue-CT4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vote Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XQ-Ue-CT4">
                                 <rect key="frame" x="20" y="61" width="280" height="254"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="254" id="cuP-Nm-2VN"/>
@@ -855,7 +855,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-gv-ZYP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6w-gv-ZYP">
                                 <rect key="frame" x="20" y="425" width="80" height="70"/>
                                 <color key="backgroundColor" red="0.16162922242803879" green="1" blue="0.00083137051921844396" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -878,13 +878,13 @@
                                     <segue destination="9p5-WX-f4s" kind="modal" id="Cdu-1I-lUi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How congressman voted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-Rt-sSV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How congressman voted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-Rt-sSV">
                                 <rect key="frame" x="20" y="323" width="280" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3dS-uF-ROi">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="3dS-uF-ROi">
                                 <rect key="frame" x="120" y="426" width="80" height="69"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
