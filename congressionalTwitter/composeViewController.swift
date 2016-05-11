@@ -52,7 +52,7 @@ class composeViewController: UIViewController, UITextViewDelegate {
                 if let thisVote = thisVote{
                     tweetTextView.text = ".@\(username) I have a question about your vote on \(thisVote.rollID): "
                 } else if let thisBill = thisBill{
-                    tweetTextView.text = ".@\(username) I have a question about your bill \(thisBill.billId): "
+                    tweetTextView.text = ".@\(username) I have a question about your bill \(thisBill.billId!): "
                 }else{
                     tweetTextView.text = ".@\(username) "
                 }
