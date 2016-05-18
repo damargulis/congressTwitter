@@ -58,8 +58,13 @@ class updateLocationViewController: UIViewController, CLLocationManagerDelegate 
         geocoder.geocodeAddressString(address) { (placemarks: [CLPlacemark]?, error: NSError?) -> Void in
             if let placemark = placemarks?[0]{
                 self.location = placemark.location?.coordinate
-                
                 self.delegate.sendValue(self.location)
+                let defaults = NSUserDefaults.standardUserDefaults()
+                
+                defaults.setValue(self.location?.longitude, forKey: "long")
+                defaults.setValue(self.location?.latitude, forKey: "lat")
+
+                
                 self.dismissViewControllerAnimated(true, completion: nil)
                 
             }
@@ -78,6 +83,7 @@ class updateLocationViewController: UIViewController, CLLocationManagerDelegate 
             locationManager.startUpdatingLocation()
             location = locationManager.location?.coordinate
             
+            
         }
         
 
@@ -91,6 +97,10 @@ class updateLocationViewController: UIViewController, CLLocationManagerDelegate 
         locationManager.stopUpdatingLocation()
         
         delegate.sendValue(location)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setValue(self.location?.longitude, forKey: "long")
+        defaults.setValue(self.location?.latitude, forKey: "lat")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

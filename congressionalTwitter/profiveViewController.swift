@@ -31,6 +31,10 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
     @IBOutlet weak var nationalTitleLabel3: UILabel!
     @IBOutlet weak var nationalLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var loginButton: UIBarButtonItem!
+    
+    
+    
     
     var locationManager: CLLocationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
@@ -59,19 +63,40 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         
         
 
-
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
+        let prefs = NSUserDefaults.standardUserDefaults()
+        if let long = prefs.objectForKey("long") as? Double{
+            let lat = prefs.doubleForKey("lat")
+            print("found something for location")
+            let loc = CLLocationCoordinate2DMake(lat, long)
+            self.location = loc
+            populateData()
             
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            location = locationManager.location?.coordinate
+        } else{
+            
+            print("didnt find anything for location")
+            self.locationManager.requestWhenInUseAuthorization()
+            if CLLocationManager.locationServicesEnabled(){
+                
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                locationManager.startUpdatingLocation()
+                location = locationManager.location?.coordinate
+                
+            }
             
         }
+
+
         
+        if twitterUser.currentUser != nil {
+            loginButton.tag = 1
+            loginButton.title = "Logout"
+        } else {
+            loginButton.tag = 0
+            loginButton.title = "Login"
+        }
         
-        // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -148,6 +173,49 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         }
         
         
+    }
+    
+    @IBAction func onTapLogin(sender: AnyObject) {
+        
+        if (sender.tag == 0){
+            let client = twitterAPI.sharedInstance
+            client.login({ () -> () in
+                self.loginButton.title = "Logout"
+                self.loginButton.tag = 1
+                }) { (error: NSError) -> () in
+                    print(error.localizedDescription)
+            }
+        } else {
+            twitterAPI.sharedInstance.logout()
+            loginButton.title = "Login"
+            loginButton.tag = 0
+        }
+
+        
+    }
+    
+    
+    func populateData(){
+        
+        openStatesAPI.sharedInstance.getLegislatorsByLocation(location!, success: { (people: [congressPerson]) -> () in
+            
+            self.state = people
+            self.stateTableView.reloadData()
+            
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
+        congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
+            self.national = people
+            self.nationalNameLabel1.text = "\(people[0].firstName!) \(people[0].lastName!)"
+            self.nationalTitleLabel1.text = "\(people[0].stateName!) \(people[0].title!)"
+            self.nationalNameLabel2.text = "\(people[1].firstName!) \(people[1].lastName!)"
+            self.nationalTitleLabel2.text = "\(people[1].stateName!) \(people[1].title!)"
+            self.nationalNameLabel3.text = "\(people[2].firstName!) \(people[2].lastName!)"
+            self.nationalTitleLabel3.text = "\(people[2].stateName!) \(people[2].title!)"
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
     }
     
     

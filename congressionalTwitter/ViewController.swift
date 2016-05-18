@@ -16,13 +16,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loginButton: UIBarButtonItem!
     
-    //Local Representative Labels
-    @IBOutlet weak var localName1Label: UILabel!
-    @IBOutlet weak var localParty1Label: UILabel!
-    @IBOutlet weak var localName2Label: UILabel!
-    @IBOutlet weak var localParty2Label: UILabel!
-    @IBOutlet weak var localName3Label: UILabel!
-    @IBOutlet weak var localParty3Label: UILabel!
     
     //Local Representative Taps
     @IBOutlet var tapGesture1: UITapGestureRecognizer!
@@ -225,23 +218,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let congressman = allCongressman![indexPath!.row]
             detailViewController.congressman = congressman
         } else {
-            //Sender is local congressmen
-            
-            let x = sender as! UITapGestureRecognizer
-            
-            if(x.isEqual(tapGesture1)){
-                
-                detailViewController.congressman = localCongressman![0]
-                
-            } else if(x.isEqual(tapGesture2)){
-                
-                detailViewController.congressman = localCongressman![1]
-                
-            } else if(x.isEqual(tapGesture3)){
-                
-                detailViewController.congressman = localCongressman![2]
-                
-            }
 
             
         }
@@ -279,23 +255,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         searchBar.resignFirstResponder()
     }
     
-    //Update location
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = manager.location?.coordinate
-        congressAPI.sharedInstance.getLocalLegislators(location!, success: { (people: [congressPerson]) -> () in
-            self.localCongressman = people
-            self.localName1Label.text = self.localCongressman![0].name
-            self.localParty1Label.text = self.localCongressman![0].partyName
-            self.localName2Label.text = self.localCongressman![1].name
-            self.localParty2Label.text = self.localCongressman![1].partyName
-            self.localName3Label.text = self.localCongressman![2].name
-            self.localParty3Label.text = self.localCongressman![2].partyName
-            }, failure: { (error: NSError) -> () in
-                print(error.localizedDescription)
-        })
-        
-        manager.stopUpdatingLocation()
-    }
     
     func chamberDidChange(sender: UISegmentedControl){
         var chamber: String?
