@@ -20,6 +20,7 @@ class vote: NSObject {
     
     init(dict: NSDictionary){
         
+        
         rollID = dict["roll_id"] as! String
         question = dict["question"] as! String
         result = dict["result"] as! String

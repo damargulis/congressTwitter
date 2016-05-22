@@ -66,14 +66,12 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
         let prefs = NSUserDefaults.standardUserDefaults()
         if let long = prefs.objectForKey("long") as? Double{
             let lat = prefs.doubleForKey("lat")
-            print("found something for location")
             let loc = CLLocationCoordinate2DMake(lat, long)
             self.location = loc
             populateData()
             
         } else{
             
-            print("didnt find anything for location")
             self.locationManager.requestWhenInUseAuthorization()
             if CLLocationManager.locationServicesEnabled(){
                 
@@ -182,11 +180,20 @@ class profiveViewController: UIViewController, CLLocationManagerDelegate, UITabl
             client.login({ () -> () in
                 self.loginButton.title = "Logout"
                 self.loginButton.tag = 1
+                self.usernameLabel.text = twitterUser.currentUser!.name as? String
+                self.screennameLabel.text = "@\(twitterUser.currentUser!.screenname!)"
+                self.bioLabel.text = twitterUser.currentUser!.tagline
+                self.profileImageView.setImageWithURL((twitterUser.currentUser!.profileImageUrl)!)
+
                 }) { (error: NSError) -> () in
                     print(error.localizedDescription)
             }
         } else {
             twitterAPI.sharedInstance.logout()
+            self.usernameLabel.text = "Please Log In"
+            self.screennameLabel.text = "To Twitter"
+            self.bioLabel.text = ""
+            self.profileImageView.image = nil
             loginButton.title = "Login"
             loginButton.tag = 0
         }
