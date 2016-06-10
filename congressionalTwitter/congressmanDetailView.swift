@@ -287,6 +287,9 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
             }
+        }else{
+            
+            
         }
     }
     
@@ -298,6 +301,13 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        if(voteControl.selectedSegmentIndex == 0){
+            getPastVotes()
+        }else if(voteControl.selectedSegmentIndex == 1){
+            getSponsoredBills()
+        }else if(voteControl.selectedSegmentIndex == 2){
+            getTweets()
+        }
     }
     
     @IBAction func onTapFollow(sender: AnyObject) {

@@ -116,7 +116,6 @@ class twitterAPI: BDBOAuth1SessionManager {
         GET("https://api.twitter.com/1.1/search/tweets.json", parameters: parameters, progress: nil, success: {
             
             (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
-            print(response)
             let tweets = tweet.tweetsWithArray(response!["statuses"] as! [NSDictionary])
             success(tweets)
             
