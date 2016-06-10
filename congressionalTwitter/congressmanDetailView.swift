@@ -35,7 +35,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        voteControl.addTarget(self, action: "voteDidChange:", forControlEvents: .ValueChanged)
+        voteControl.addTarget(self, action: #selector(congressmanDetailView.voteDidChange(_:)), forControlEvents: .ValueChanged)
         
         if let twitterUsername = congressman.twitterUsername{
             
@@ -275,7 +275,17 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
                 }
                 
             } else if(voteControl.selectedSegmentIndex == 2){
-                //some kind of search for tweets?
+                
+                if(congressman.type == 0){
+                    
+                    twitterAPI.sharedInstance.searchTweets(congressman.twitterUsername!, query: search, success: { (tweets: [tweet]) in
+                        self.tweets = tweets
+                        self.tableView.reloadData()
+                        }, failure: { (error: NSError) in
+                            print(error.localizedDescription)
+                    })
+                }
+                
             }
         }
     }

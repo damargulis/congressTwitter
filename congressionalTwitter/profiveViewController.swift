@@ -11,7 +11,7 @@ import CoreLocation
 
 protocol ModalViewControllerDelegate
 {
-    func sendValue(var loc : CLLocationCoordinate2D?)
+    func sendValue( loc : CLLocationCoordinate2D?)
 }
 
 class profiveViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, ModalViewControllerDelegate {
