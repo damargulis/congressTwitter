@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         page = 1
         
         chamberControl.selectedSegmentIndex = 2
-        chamberControl.addTarget(self, action: "chamberDidChange:", forControlEvents: .ValueChanged)
+        chamberControl.addTarget(self, action: #selector(ViewController.chamberDidChange(_:)), forControlEvents: .ValueChanged)
 
         
         

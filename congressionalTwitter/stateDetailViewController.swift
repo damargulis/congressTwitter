@@ -48,7 +48,7 @@ class stateDetailViewController: UIViewController, UITableViewDataSource, UITabl
         flagImageView.image = UIImage(named: curstate.name)
 
         chamberControl.selectedSegmentIndex = i
-        chamberControl.addTarget(self, action: "chamberDidChange:", forControlEvents: .ValueChanged)
+        chamberControl.addTarget(self, action: #selector(stateDetailViewController.chamberDidChange(_:)), forControlEvents: .ValueChanged)
         
         // Do any additional setup after loading the view.
     }
