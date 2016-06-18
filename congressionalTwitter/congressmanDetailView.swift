@@ -95,7 +95,7 @@ class congressmanDetailView: UIViewController, UITableViewDataSource, UITableVie
             nameLabel.text = name
         }
         if let chamber = congressman.chamber{
-            chamberLabel.text = "Chamber: " + chamber
+            chamberLabel.text = "Chamber: " + chamber.capitalizedString
         }
         if let party = congressman.partyName{
             partyLabel.text = "Party: " + party
