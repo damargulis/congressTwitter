@@ -21,6 +21,8 @@ class tweet: NSObject {
     var id: Int
     var idstr: String?
     
+    var hashtags: [NSDictionary]?
+    
     init(dictionary: NSDictionary){
         user = twitterUser(dictionary: dictionary["user"] as! NSDictionary)
         text = dictionary["text"] as? String
@@ -39,7 +41,11 @@ class tweet: NSObject {
             
         id = (dictionary["id"] as? Int)!
         idstr = dictionary["id_str"] as? String
-            
+        
+        hashtags = dictionary["entities"]!["hashtags"] as? [NSDictionary]
+        if((hashtags) != nil){
+            print(hashtags)
+        }
     }
         
     class func tweetsWithArray(array: [NSDictionary]) -> [tweet] {

@@ -109,6 +109,23 @@ class twitterAPI: BDBOAuth1SessionManager {
         
     }
     
+    func searchTweets(username: String!, query: String!, success: ([tweet]) -> (), failure: (NSError) -> ()){
+        
+        let parameters = ["q": "from%3A" + username + "%20" + query]
+        
+        GET("https://api.twitter.com/1.1/search/tweets.json", parameters: parameters, progress: nil, success: {
+            
+            (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let tweets = tweet.tweetsWithArray(response!["statuses"] as! [NSDictionary])
+            success(tweets)
+            
+        }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+            failure(error)
+        }
+        
+    }
+    
+    
     func retweet(tweets: tweet, success: () -> (), failure: (NSError) -> ()){
         
         POST("https://api.twitter.com/1.1/statuses/retweet/\(tweets.idstr!).json", parameters: nil, progress: nil, success: { (data: NSURLSessionDataTask, object: AnyObject?) -> Void in

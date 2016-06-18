@@ -78,7 +78,19 @@ class voteDetailViewController: UIViewController {
             
         }else if let thistweet = thistweet{
             
-            questionLabel.text = thistweet.text
+            var mutableString = NSMutableAttributedString(string: thistweet.text!)
+            
+            for tag in thistweet.hashtags!{
+                var indices = tag["indices"] as! [Int]
+                mutableString.addAttribute(NSForegroundColorAttributeName, value: UIColor.blueColor(), range: NSRange(location: indices[0], length: indices[1] - indices[0]))
+            }
+            
+            
+            
+            //questionLabel.text = thistweet.text
+            questionLabel.attributedText = mutableString
+            
+            
             voteLabel.text = "Favorites: \(thistweet.favoritesCount)"
             resultLabel.text = "Retweets: \(thistweet.retweetCount)"
             if(thistweet.favorited){
